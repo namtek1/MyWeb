@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin</title>
+
+<style>
+
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #031027;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   ANIMATED BACKGROUND
+========================================================= */
+
+.bubble-background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bubble {
+    position: absolute;
+    display: block;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+    box-shadow:
+        0 0 15px rgba(255, 255, 255, 0.10),
+        inset 0 0 10px rgba(255, 255, 255, 0.10);
+
+    animation: diagonalMove linear infinite;
+}
+
+
+/* Bubble positions */
+
+.bubble1 {
+    width: 20px;
+    height: 20px;
+    left: 5%;
+    bottom: -50px;
+    animation-duration: 15s;
+}
+
+.bubble2 {
+    width: 35px;
+    height: 35px;
+    left: 15%;
+    bottom: -80px;
+    animation-duration: 20s;
+    animation-delay: 2s;
+}
+
+.bubble3 {
+    width: 15px;
+    height: 15px;
+    left: 25%;
+    bottom: -40px;
+    animation-duration: 13s;
+    animation-delay: 4s;
+}
+
+.bubble4 {
+    width: 45px;
+    height: 45px;
+    left: 35%;
+    bottom: -100px;
+    animation-duration: 24s;
+    animation-delay: 1s;
+}
+
+.bubble5 {
+    width: 25px;
+    height: 25px;
+    left: 45%;
+    bottom: -60px;
+    animation-duration: 17s;
+    animation-delay: 5s;
+}
+
+.bubble6 {
+    width: 55px;
+    height: 55px;
+    left: 55%;
+    bottom: -120px;
+    animation-duration: 27s;
+    animation-delay: 3s;
+}
+
+.bubble7 {
+    width: 18px;
+    height: 18px;
+    left: 65%;
+    bottom: -50px;
+    animation-duration: 14s;
+    animation-delay: 6s;
+}
+
+.bubble8 {
+    width: 30px;
+    height: 30px;
+    left: 72%;
+    bottom: -70px;
+    animation-duration: 19s;
+    animation-delay: 2s;
+}
+
+.bubble9 {
+    width: 42px;
+    height: 42px;
+    left: 80%;
+    bottom: -90px;
+    animation-duration: 23s;
+    animation-delay: 7s;
+}
+
+.bubble10 {
+    width: 22px;
+    height: 22px;
+    left: 88%;
+    bottom: -50px;
+    animation-duration: 16s;
+    animation-delay: 4s;
+}
+
+
+/* Bubble animation */
+
+@keyframes diagonalMove {
+
+    0% {
+        transform:
+            translate(-100px, 100px)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    90% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform:
+            translate(350px, -120vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   LOGIN PAGE
+========================================================= */
+
+.login-page {
+    position: relative;
+    z-index: 2;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+}
+
+
+/* Login card */
+
+.login-box {
+
+    width: 100%;
+    max-width: 420px;
+
+    padding: 45px 35px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.10),
+            rgba(255,255,255,0.03)
+        );
+
+    border: 1px solid rgba(246,196,83,0.45);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.45);
+
+    backdrop-filter: blur(15px);
+
+    text-align: center;
+
+    animation: loginAppear 1s ease;
+}
+
+
+@keyframes loginAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* Login heading */
+
+.login-box h1 {
+
+    color: #f6c453;
+
+    font-size: 34px;
+
+    margin-bottom: 8px;
+
+    letter-spacing: 1px;
+}
+
+
+.login-box p {
+
+    color: rgba(255,255,255,0.75);
+
+    margin-bottom: 30px;
+
+    font-size: 14px;
+}
+
+
+/* Inputs */
+
+.input-group {
+
+    text-align: left;
+
+    margin-bottom: 20px;
+}
+
+
+.input-group label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #f6c453;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+.input-group input {
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    background: rgba(0,0,0,0.25);
+
+    color: white;
+
+    outline: none;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+
+.input-group input:focus {
+
+    border-color: #f6c453;
+
+    box-shadow:
+        0 0 12px rgba(246,196,83,0.25);
+}
+
+
+.login-button {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    color: #031027;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f6c453,
+            #ffffff,
+            #e6a52e
+        );
+
+    transition: 0.3s;
+}
+
+
+.login-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(246,196,83,0.25);
+}
+
+
+.login-message {
+
+    min-height: 22px;
+
+    margin-top: 15px;
+
+    font-size: 14px;
+
+    color: #ff8b8b;
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard {
+
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 100vh;
+
+    padding: 25px 5% 100px;
+
+    display: none;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.dashboard-header {
+
+    width: 100%;
+
+    text-align: center;
+
+    padding: 25px 20px;
+
+    margin-bottom: 25px;
+
+    border-bottom: 1px solid rgba(246,196,83,0.3);
+}
+
+
+.dashboard-header h1 {
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(32px, 5vw, 55px);
+
+    color: #f6c453;
+
+    letter-spacing: 2px;
+}
+
+
+.dashboard-header p {
+
+    margin-top: 7px;
+
+    color: white;
+
+    font-size: 14px;
+
+    opacity: 0.75;
+}
+
+
+/* =========================================================
+   TOP CONTROLS
+========================================================= */
+
+.top-controls {
+
+    max-width: 1100px;
+
+    margin: 0 auto 35px;
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+}
+
+
+/* Search */
+
+.search-box {
+
+    flex: 1;
+
+    min-width: 250px;
+
+    position: relative;
+}
+
+
+.search-box input {
+
+    width: 100%;
+
+    padding: 14px 18px;
+
+    border-radius: 30px;
+
+    border: 1px solid rgba(246,196,83,0.45);
+
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+
+    outline: none;
+
+    font-size: 15px;
+
+    backdrop-filter: blur(10px);
+}
+
+
+.search-box input::placeholder {
+
+    color: rgba(255,255,255,0.65);
+}
+
+
+.search-box input:focus {
+
+    border-color: #f6c453;
+
+    box-shadow:
+        0 0 15px rgba(246,196,83,0.15);
+}
+
+
+/* Logout */
+
+.logout-button {
+
+    padding: 13px 24px;
+
+    border-radius: 30px;
+
+    border: 1px solid #f6c453;
+
+    background: transparent;
+
+    color: #f6c453;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+.logout-button:hover {
+
+    background: #f6c453;
+
+    color: #031027;
+}
+
+
+/* =========================================================
+   DOCUMENT GRID
+========================================================= */
+
+.document-section {
+
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+
+.document-section h2 {
+
+    text-align: center;
+
+    color: white;
+
+    margin-bottom: 25px;
+
+    font-size: 24px;
+}
+
+
+/* Exactly 3 per row on larger screens */
+
+.document-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 30px;
+
+    justify-content: center;
+}
+
+
+/* =========================================================
+   DOCUMENT CARD
+========================================================= */
+
+.document-card {
+
+    min-height: 210px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 25px 15px;
+
+    border-radius: 50%;
+
+    aspect-ratio: 1 / 1;
+
+    max-width: 240px;
+
+    width: 100%;
+
+    margin: auto;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(246,196,83,0.16),
+            rgba(255,255,255,0.05)
+        );
+
+    border: 2px solid rgba(246,196,83,0.45);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.25);
+
+    transition:
+        transform 0.35s,
+        border-color 0.35s,
+        box-shadow 0.35s;
+
+    animation: cardAppear 0.8s ease both;
+}
+
+
+.document-card:hover {
+
+    transform: translateY(-8px) scale(1.03);
+
+    border-color: #f6c453;
+
+    box-shadow:
+        0 20px 40px rgba(246,196,83,0.18);
+}
+
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.document-card h3 {
+
+    color: #f6c453;
+
+    font-size: 17px;
+
+    line-height: 1.3;
+
+    margin-bottom: 15px;
+
+    max-width: 160px;
+}
+
+
+/* Open link */
+
+.document-link {
+
+    display: inline-block;
+
+    text-decoration: none;
+
+    padding: 9px 18px;
+
+    border-radius: 20px;
+
+    color: #031027;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f6c453,
+            #ffffff
+        );
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+.document-link:hover {
+
+    transform: scale(1.05);
+}
+
+
+/* =========================================================
+   ADD LINK SECTION
+========================================================= */
+
+.add-section {
+
+    max-width: 800px;
+
+    margin: 60px auto 0;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.05);
+
+    border: 1px solid rgba(246,196,83,0.30);
+
+    backdrop-filter: blur(10px);
+}
+
+
+.add-section h2 {
+
+    text-align: center;
+
+    color: #f6c453;
+
+    margin-bottom: 8px;
+}
+
+
+.add-section > p {
+
+    text-align: center;
+
+    color: rgba(255,255,255,0.7);
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+
+.add-form {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr auto;
+
+    gap: 12px;
+}
+
+
+.add-form input {
+
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border-radius: 10px;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    background: rgba(0,0,0,0.25);
+
+    color: white;
+
+    outline: none;
+}
+
+
+.add-form input:focus {
+
+    border-color: #f6c453;
+}
+
+
+.add-button {
+
+    padding: 13px 22px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f6c453,
+            #ffffff,
+            #e6a52e
+        );
+
+    color: #031027;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.add-button:hover {
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   ADDED LINK DELETE BUTTON
+========================================================= */
+
+.delete-link {
+
+    margin-top: 10px;
+
+    padding: 6px 12px;
+
+    border-radius: 15px;
+
+    border: 1px solid rgba(255,255,255,0.25);
+
+    background: rgba(0,0,0,0.25);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    transition: 0.3s;
+}
+
+
+.delete-link:hover {
+
+    background: rgba(255,255,255,0.15);
+}
+
+
+/* =========================================================
+   EMPTY SEARCH MESSAGE
+========================================================= */
+
+.no-results {
+
+    display: none;
+
+    text-align: center;
+
+    margin-top: 30px;
+
+    color: rgba(255,255,255,0.7);
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 20px;
+
+    text-align: center;
+
+    color: rgba(255,255,255,0.65);
+
+    font-size: 13px;
+
+    z-index: 3;
+}
+
+
+.footer span {
+
+    color: #f6c453;
+}
+
+
+/* =========================================================
+   RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .dashboard {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .document-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+    .add-form {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    .add-button {
+
+        grid-column: 1 / -1;
+
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .login-box {
+
+        padding: 35px 22px;
+
+    }
+
+    .dashboard {
+
+        padding:
+            15px
+            15px
+            90px;
+
+    }
+
+    .dashboard-header {
+
+        padding:
+            20px
+            10px;
+
+    }
+
+    .dashboard-header h1 {
+
+        font-size: 36px;
+
+    }
+
+    .document-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+
+    }
+
+    .document-card {
+
+        max-width: 220px;
+
+    }
+
+    .top-controls {
+
+        flex-direction: column;
+
+    }
+
+    .search-box {
+
+        width: 100%;
+
+    }
+
+    .logout-button {
+
+        width: 100%;
+
+    }
+
+    .add-form {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .add-button {
+
+        grid-column: auto;
+
+        width: 100%;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .login-box {
+
+        padding:
+            30px
+            18px;
+
+    }
+
+    .login-box h1 {
+
+        font-size: 28px;
+
+    }
+
+    .document-card {
+
+        max-width: 200px;
+
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     ANIMATED BACKGROUND
+===================================================== -->
+
+<div class="bubble-background">
+
+    <span class="bubble bubble1"></span>
+    <span class="bubble bubble2"></span>
+    <span class="bubble bubble3"></span>
+    <span class="bubble bubble4"></span>
+    <span class="bubble bubble5"></span>
+    <span class="bubble bubble6"></span>
+    <span class="bubble bubble7"></span>
+    <span class="bubble bubble8"></span>
+    <span class="bubble bubble9"></span>
+    <span class="bubble bubble10"></span>
+
+</div>
+
+
+<!-- =====================================================
+     LOGIN PAGE
+===================================================== -->
+    
+<section class="login-page" id="loginPage">
+   
+    <div class="login-box">
+        <a href="index.html">Return to Home</a>
+        <br><br>
+        <h1>Admin Login</h1>
+
+        <p>
+            Enter access credentials:
+        </p>
+
+
+        <form id="loginForm">
+
+            <div class="input-group">
+
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter username"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-button"
+            >
+                Login
+            </button>
+
+        </form>
+
+
+        <div
+            class="login-message"
+            id="loginMessage"
+        ></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ADMIN DASHBOARD
+===================================================== -->
+
+<section
+    class="dashboard"
+    id="dashboard"
+>
+
+
+    <!-- HEADER -->
+
+    <header class="dashboard-header">
+
+        <h1>NAM Private</h1>
+
+        <p>
+            Personal Documents 
+        </p>
+
+    </header>
+
+
+
+    <!-- SEARCH + LOGOUT -->
+
+    <div class="top-controls">
+
+        <div class="search-box">
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search documents..."
+            >
+
+        </div>
+
+
+        <button
+            class="logout-button"
+            id="logoutButton"
+        >
+            Logout
+        </button>
+
+    </div>
+
+
+
+    <!-- DOCUMENTS -->
+
+    <section class="document-section">
+
+   
+        <div
+            class="document-grid"
+            id="documentGrid"
+        >
+
+
+            <!-- RESUME -->
+
+            <div
+                class="document-card"
+                data-name="Resume"
+            >
+
+                <h3>
+                    Resume
+                </h3>
+
+                <a
+                    href="resume.pdf"
+                    target="_blank"
+                    class="document-link"
+                >
+                    Open
+                </a>
+
+            </div>
+
+
+
+            <!-- CURRICULUM VITAE -->
+
+            <div
+                class="document-card"
+                data-name="Curriculum vitae"
+            >
+
+                <h3>
+                    Curriculum Vitae
+                </h3>
+
+                <a
+                    href="cv.pdf"
+                    target="_blank"
+                    class="document-link"
+                >
+                    Open
+                </a>
+                <br><br>
+                <a href="#"
+                    target="_blank"
+                    class="document-link">
+                 Open   
+                </a>
+            </div>
+
+
+
+            <!-- DEGREE -->
+
+            <div
+                class="document-card"
+                data-name="Degree Certificate"
+            >
+
+                <h3>
+                    Degree Certificate
+                </h3>
+
+                <a
+                    href="degree-certificate.pdf"
+                    target="_blank"
+                    class="document-link"
+                >
+                    Open
+                </a>
+
+            </div>
+
+
+
+            <!-- KCPE -->
+
+            <div
+                class="document-card"
+                data-name="KCPE certificate"
+            >
+
+                <h3>
+                    KCPE Certificate
+                </h3>
+
+                <a
+                    href="kcpe-certificate.pdf"
+                    target="_blank"
+                    class="document-link"
+                >
+                    Open
+                </a>
+
+            </div>
+
+
+
+            <!-- KCSE -->
+
+            <div
+                class="document-card"
+                data-name="KCSE certificate"
+            >
+
+                <h3>
+                    KCSE Certificate
+                </h3>
+
+                <a
+                    href="kcse-certificate.pdf"
+                    target="_blank"
+                    class="document-link"
+                >
+                    Open
+                </a>
+
+            </div>
+
+
+
+            <!-- TRANSCRIPTS -->
+
+            <div
+                class="document-card"
+                data-name="Transcripts"
+            >
+
+                <h3>
+                    Transcripts
+                </h3>
+
+                <a
+                    href="transcripts.pdf"
+                    target="_blank"
+                    class="document-link"
+                >
+                    Open
+                </a>
+
+            </div>
+
+
+
+            <!-- RECOMMENDATION -->
+
+            <div
+                class="document-card"
+                data-name="Recommendation"
+            >
+
+                <h3>
+                    Recommendation
+                </h3>
+
+                <a
+                    href="recommendation.pdf"
+                    target="_blank"
+                    class="document-link"
+                >
+                    Open
+                </a>
+
+            </div>
+            
+           <!-- BIRTH CERTIFICATE -->
+
+            <div
+                class="document-card"
+                data-name="Birth Certificate"
+            >
+
+                <h3>
+                    Birth Certificate
+                </h3>
+
+                <a
+                    href="birth-certificate.pdf"
+                    target="_blank"
+                    class="document-link"
+                >
+                    Open
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div
+            class="no-results"
+            id="noResults"
+        >
+            No matching document found.
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         ADD MORE LINKS
+    ================================================== -->
+
+    <section class="add-section">
+
+        <h2>
+            Add More Documents
+        </h2>
+
+        <p>
+            Add another document link to your document collection.
+        </p>
+
+
+        <form
+            class="add-form"
+            id="addForm"
+        >
+
+            <input
+                type="text"
+                id="newName"
+                placeholder="Document name"
+                required
+            >
+
+
+            <input
+                type="url"
+                id="newUrl"
+                placeholder="Document URL"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="add-button"
+            >
+                Add Link
+            </button>
+
+        </form>
+
+    </section>
+
+
+</section>
+
+
+<script>
+
+/* =========================================================
+   LOGIN DETAILS
+========================================================= */
+
+/*
+   CHANGE THESE TWO VALUES.
+
+   These are only front-end credentials.
+   For a real secure system, authentication should be handled
+   by a server/backend rather than JavaScript.
+*/
+
+const ADMIN_USERNAME = "Amos";
+
+const ADMIN_PASSWORD = "2002";
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const loginPage =
+    document.getElementById("loginPage");
+
+const dashboard =
+    document.getElementById("dashboard");
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const loginMessage =
+    document.getElementById("loginMessage");
+
+const logoutButton =
+    document.getElementById("logoutButton");
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const documentGrid =
+    document.getElementById("documentGrid");
+
+const noResults =
+    document.getElementById("noResults");
+
+const addForm =
+    document.getElementById("addForm");
+
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+loginForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        const username =
+            document.getElementById("username").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+
+        if (
+            username === ADMIN_USERNAME &&
+            password === ADMIN_PASSWORD
+        ) {
+
+            loginPage.style.display = "none";
+
+            dashboard.style.display = "block";
+
+            loginMessage.textContent = "";
+
+        }
+
+        else {
+
+            loginMessage.textContent =
+                "Incorrect username or password.";
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+logoutButton.addEventListener(
+    "click",
+    function() {
+
+        dashboard.style.display = "none";
+
+        loginPage.style.display = "flex";
+
+        document.getElementById("loginForm").reset();
+
+    }
+);
+
+
+
+/* =========================================================
+   SEARCH DOCUMENTS
+========================================================= */
+
+searchInput.addEventListener(
+    "input",
+    function() {
+
+        const searchTerm =
+            searchInput.value
+            .toLowerCase()
+            .trim();
+
+
+        const cards =
+            document.querySelectorAll(".document-card");
+
+
+        let visibleCount = 0;
+
+
+        cards.forEach(
+            function(card) {
+
+                const name =
+                    card.dataset.name
+                    .toLowerCase();
+
+
+                if (
+                    name.includes(searchTerm)
+                ) {
+
+                    card.style.display =
+                        "flex";
+
+                    visibleCount++;
+
+                }
+
+                else {
+
+                    card.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
+
+        if (visibleCount === 0) {
+
+            noResults.style.display =
+                "block";
+
+        }
+
+        else {
+
+            noResults.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   ADD NEW DOCUMENT
+========================================================= */
+
+addForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById("newName")
+            .value
+            .trim();
+
+
+        const url =
+            document.getElementById("newUrl")
+            .value
+            .trim();
+
+
+        if (!name || !url) {
+
+            return;
+
+        }
+
+
+        /* Create card */
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "document-card";
+
+        card.dataset.name =
+            name;
+
+
+        /* Document title */
+
+        const title =
+            document.createElement("h3");
+
+        title.textContent =
+            name;
+
+
+        /* Open link */
+
+        const link =
+            document.createElement("a");
+
+        link.href =
+            url;
+
+        link.target =
+            "_blank";
+
+        link.rel =
+            "noopener noreferrer";
+
+        link.className =
+            "document-link";
+
+        link.textContent =
+            "Open";
+
+
+        /* Delete button */
+
+        const deleteButton =
+            document.createElement("button");
+
+        deleteButton.className =
+            "delete-link";
+
+        deleteButton.textContent =
+            "Delete";
+
+
+        deleteButton.addEventListener(
+            "click",
+            function() {
+
+                card.remove();
+
+                searchInput.dispatchEvent(
+                    new Event("input")
+                );
+
+            }
+        );
+
+
+        /* Build card */
+
+        card.appendChild(title);
+
+        card.appendChild(link);
+
+        card.appendChild(deleteButton);
+
+
+        /* Add to grid */
+
+        documentGrid.appendChild(card);
+
+
+        /* Clear form */
+
+        addForm.reset();
+
+    }
+);
+
+
+
+/* =========================================================
+   AUTO-RENEWING YEAR
+========================================================= */
+
+document.getElementById("currentYear")
+    .textContent =
+    new Date().getFullYear();
+
+
+/* =========================================================
+   ENTER KEY LOGIN EXPERIENCE
+========================================================= */
+
+document.getElementById("password")
+    .addEventListener(
+        "keypress",
+        function(event) {
+
+            if (event.key === "Enter") {
+
+                loginForm.requestSubmit();
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
+  
+
+
+
+            

@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know Amos</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #06132d;
+        color: white;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* =========================
+       ANIMATED BACKGROUND
+    ========================= */
+
+    .background {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+        z-index: -5;
+        background:
+            radial-gradient(
+                circle at top right,
+                rgba(31, 67, 130, 0.35),
+                transparent 35%
+            ),
+            radial-gradient(
+                circle at bottom left,
+                rgba(10, 31, 75, 0.5),
+                transparent 40%
+            ),
+            #06132d;
+    }
+
+    .bubble {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        border: 1px solid rgba(255,255,255,0.18);
+        transform: rotate(45deg);
+        animation: moveBubble 18s linear infinite;
+    }
+
+    .bubble:nth-child(1) {
+        left: 5%;
+        top: 10%;
+        width: 45px;
+        height: 45px;
+        animation-duration: 14s;
+    }
+
+    .bubble:nth-child(2) {
+        left: 25%;
+        top: 70%;
+        width: 90px;
+        height: 90px;
+        animation-duration: 22s;
+    }
+
+    .bubble:nth-child(3) {
+        left: 55%;
+        top: 20%;
+        width: 60px;
+        height: 60px;
+        animation-duration: 17s;
+    }
+
+    .bubble:nth-child(4) {
+        left: 80%;
+        top: 65%;
+        width: 100px;
+        height: 100px;
+        animation-duration: 25s;
+    }
+
+    .bubble:nth-child(5) {
+        left: 90%;
+        top: 15%;
+        width: 50px;
+        height: 50px;
+        animation-duration: 20s;
+    }
+
+    .bubble:nth-child(6) {
+        left: 40%;
+        top: 90%;
+        width: 35px;
+        height: 35px;
+        animation-duration: 16s;
+    }
+
+    @keyframes moveBubble {
+        0% {
+            transform: translate(0, 0) rotate(45deg);
+            opacity: 0.2;
+        }
+
+        50% {
+            transform: translate(-100px, -120px) rotate(225deg);
+            opacity: 0.5;
+        }
+
+        100% {
+            transform: translate(80px, -240px) rotate(405deg);
+            opacity: 0.1;
+        }
+    }
+
+    /* =========================
+       HOME BUTTON
+    ========================= */
+
+    .home-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 20;
+
+        padding: 10px 18px;
+
+        color: white;
+        text-decoration: none;
+
+        border: 1px solid rgba(255,215,0,0.7);
+        border-radius: 25px;
+
+        background: rgba(6,19,45,0.75);
+        backdrop-filter: blur(8px);
+
+        font-size: 0.85rem;
+        transition: 0.3s ease;
+    }
+
+    .home-button:hover {
+        color: #06132d;
+        background: #ffd700;
+        transform: translateX(-3px);
+    }
+
+    /* =========================
+       MAIN CONTAINER
+    ========================= */
+
+    .page-container {
+        width: min(1200px, 92%);
+        margin: auto;
+        padding: 85px 0 110px;
+    }
+
+    /* =========================
+       PAGE TITLE
+    ========================= */
+
+    .page-title {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .page-title h1 {
+        color: #ffd700;
+        font-size: clamp(2rem, 5vw, 3.4rem);
+        letter-spacing: 2px;
+        margin-bottom: 12px;
+    }
+
+    .page-title p {
+        max-width: 650px;
+        margin: auto;
+        color: rgba(255,255,255,0.78);
+        line-height: 1.7;
+        font-size: 0.98rem;
+    }
+
+    /* =========================
+       HERO SECTION
+    ========================= */
+
+    .about-hero {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 60px;
+        align-items: center;
+        margin-bottom: 70px;
+    }
+
+    /* =========================
+       PROFILE PHOTO
+    ========================= */
+
+    .photo-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .photo-frame {
+        width: 290px;
+        height: 290px;
+        border-radius: 50%;
+        padding: 7px;
+
+        position: relative;
+
+        background: conic-gradient(
+            from 0deg,
+            #ffd700,
+            white,
+            #ffd700,
+            transparent,
+            #ffd700
+        );
+
+        animation: rotateFrame 7s linear infinite;
+
+        box-shadow:
+            0 0 25px rgba(255,215,0,0.35),
+            0 0 70px rgba(255,215,0,0.12);
+    }
+
+    .photo-frame::before {
+        content: "";
+        position: absolute;
+        inset: -12px;
+
+        border: 1px solid rgba(255,215,0,0.4);
+        border-radius: 50%;
+
+        animation: pulseFrame 3s ease-in-out infinite;
+    }
+
+    .photo-inner {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #0a1d42;
+        border: 5px solid #06132d;
+        position: relative;
+    }
+
+    .profile-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+
+        transition: transform 0.6s ease;
+    }
+
+    .photo-frame:hover .profile-photo {
+        transform: scale(1.08);
+    }
+
+    @keyframes rotateFrame {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes pulseFrame {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 0.4;
+        }
+
+        50% {
+            transform: scale(1.06);
+            opacity: 0.9;
+        }
+    }
+
+    /* Decorative dots */
+
+    .dot {
+        position: absolute;
+        width: 11px;
+        height: 11px;
+        background: #ffd700;
+        border-radius: 50%;
+        box-shadow: 0 0 12px rgba(255,215,0,0.8);
+    }
+
+    .dot.one {
+        top: 20px;
+        right: 20px;
+        animation: floatingDot 3s ease-in-out infinite;
+    }
+
+    .dot.two {
+        bottom: 35px;
+        left: 10px;
+        animation: floatingDot 4s ease-in-out infinite reverse;
+    }
+
+    @keyframes floatingDot {
+        0%,100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-15px);
+        }
+    }
+
+    /* =========================
+       HERO TEXT
+    ========================= */
+
+    .hero-text h2 {
+        color: white;
+        font-size: clamp(1.7rem, 4vw, 2.5rem);
+        margin-bottom: 18px;
+    }
+
+    .hero-text h2 span {
+        color: #ffd700;
+    }
+
+    .hero-text p {
+        color: rgba(255,255,255,0.78);
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+
+    .identity-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 25px;
+    }
+
+    .identity-card {
+        padding: 18px 10px;
+        text-align: center;
+
+        border: 1px solid rgba(255,215,0,0.25);
+        background: rgba(255,255,255,0.04);
+        border-radius: 12px;
+
+        transition: 0.3s ease;
+    }
+
+    .identity-card:hover {
+        transform: translateY(-6px);
+        border-color: #ffd700;
+        background: rgba(255,215,0,0.08);
+    }
+
+    .identity-card strong {
+        display: block;
+        color: #ffd700;
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+    }
+
+    .identity-card span {
+        color: rgba(255,255,255,0.65);
+        font-size: 0.75rem;
+    }
+
+    /* =========================
+       GENERAL SECTIONS
+    ========================= */
+
+    .content-section {
+        margin-bottom: 60px;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 28px;
+    }
+
+    .section-title h2 {
+        color: #ffd700;
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+        margin-bottom: 8px;
+    }
+
+    .section-title p {
+        color: rgba(255,255,255,0.68);
+        max-width: 650px;
+        margin: auto;
+        line-height: 1.6;
+    }
+
+    /* =========================
+       FOUNDER CARD
+    ========================= */
+
+    .founder-card {
+        max-width: 850px;
+        margin: auto;
+
+        padding: 35px;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(255,215,0,0.08),
+                rgba(255,255,255,0.035)
+            );
+
+        border: 1px solid rgba(255,215,0,0.3);
+        border-radius: 20px;
+
+        box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+
+        text-align: center;
+    }
+
+    .founder-card h3 {
+        color: white;
+        font-size: 1.5rem;
+        margin-bottom: 14px;
+    }
+
+    .founder-card h3 span {
+        color: #ffd700;
+    }
+
+    .founder-card p {
+        color: rgba(255,255,255,0.76);
+        line-height: 1.8;
+        margin-bottom: 22px;
+    }
+
+    .founder-button {
+        display: inline-block;
+
+        padding: 11px 23px;
+
+        border-radius: 25px;
+
+        color: #06132d;
+        background: linear-gradient(
+            135deg,
+            #ffd700,
+            #fff1a3
+        );
+
+        text-decoration: none;
+        font-weight: bold;
+
+        transition: 0.3s ease;
+    }
+
+    .founder-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(255,215,0,0.3);
+    }
+
+    /* =========================
+       INTERESTS
+    ========================= */
+
+    .interest-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .interest-card {
+        padding: 30px 22px;
+        text-align: center;
+
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.12);
+
+        border-radius: 18px;
+
+        transition:
+            transform 0.3s ease,
+            border-color 0.3s ease,
+            background 0.3s ease;
+    }
+
+    .interest-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(255,215,0,0.65);
+        background: rgba(255,215,0,0.06);
+    }
+
+    .interest-card h3 {
+        color: #ffd700;
+        margin-bottom: 12px;
+        font-size: 1.2rem;
+    }
+
+    .interest-card p {
+        color: rgba(255,255,255,0.7);
+        line-height: 1.7;
+        font-size: 0.9rem;
+    }
+
+    /* =========================
+       MY PERSPECTIVE
+    ========================= */
+
+    .perspective {
+        max-width: 850px;
+        margin: auto;
+        padding: 35px;
+
+        border-left: 3px solid #ffd700;
+
+        background: rgba(255,255,255,0.035);
+        border-radius: 0 18px 18px 0;
+    }
+
+    .perspective p {
+        color: rgba(255,255,255,0.78);
+        line-height: 1.9;
+        font-size: 1rem;
+    }
+
+    /* =========================
+       SMALL CONTACT CARD
+    ========================= */
+
+    .mini-contact-card {
+        width: min(92%, 620px);
+        margin: 50px auto 40px;
+
+        padding: 24px 28px;
+
+        position: relative;
+        overflow: hidden;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(255,255,255,0.09),
+                rgba(255,255,255,0.035)
+            );
+
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 18px;
+
+        box-shadow:
+            0 15px 40px rgba(0,0,0,0.3),
+            inset 0 0 20px rgba(255,255,255,0.025);
+
+        backdrop-filter: blur(8px);
+
+        animation: miniCardAppear 0.8s ease forwards;
+    }
+
+    .mini-contact-card::before {
+        content: "";
+
+        position: absolute;
+        top: 0;
+        left: 15%;
+
+        width: 70%;
+        height: 2px;
+
+        background:
+            linear-gradient(
+                90deg,
+                transparent,
+                #ffd700,
+                white,
+                #ffd700,
+                transparent
+            );
+
+        box-shadow:
+            0 0 12px rgba(255,215,0,0.8);
+    }
+
+    .mini-contact-card::after {
+        content: "";
+
+        position: absolute;
+
+        width: 120px;
+        height: 120px;
+
+        right: -60px;
+        bottom: -60px;
+
+        border: 1px solid rgba(255,215,0,0.15);
+        border-radius: 50%;
+
+        animation: contactGlow 5s linear infinite;
+    }
+
+    .mini-contact-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+    }
+
+    .mini-contact-content h2 {
+        margin-bottom: 7px;
+
+        color: #ffd700;
+
+        font-size: clamp(1.2rem, 3vw, 1.55rem);
+        letter-spacing: 1px;
+    }
+
+    .mini-contact-content p {
+        max-width: 480px;
+        margin: 0 auto 17px;
+
+        color: rgba(255,255,255,0.82);
+
+        font-size: clamp(0.82rem, 2vw, 0.95rem);
+        line-height: 1.5;
+    }
+
+    .mini-contact-details {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .mini-contact-btn {
+        display: inline-block;
+
+        padding: 9px 20px;
+
+        color: #06132d;
+
+        background:
+            linear-gradient(
+                135deg,
+                #ffd700,
+                #fff4a3
+            );
+
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.85rem;
+
+        border-radius: 25px;
+
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+    }
+
+    .mini-contact-btn:hover {
+        transform: translateY(-3px);
+
+        box-shadow:
+            0 7px 18px rgba(255,215,0,0.35);
+    }
+
+    .mini-email-link {
+        color: white;
+        text-decoration: none;
+
+        font-size: 0.82rem;
+
+        border-bottom:
+            1px solid rgba(255,215,0,0.6);
+
+        padding-bottom: 3px;
+
+        transition:
+            color 0.3s ease,
+            border-color 0.3s ease;
+    }
+
+    .mini-email-link:hover {
+        color: #ffd700;
+        border-color: #ffd700;
+    }
+
+    @keyframes miniCardAppear {
+        from {
+            opacity: 0;
+            transform: translateY(25px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes contactGlow {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+        text-align: center;
+
+        padding: 22px 15px;
+
+        color: rgba(255,255,255,0.65);
+
+        font-size: 0.8rem;
+
+        border-top:
+            1px solid rgba(255,255,255,0.08);
+
+        background: rgba(3,12,29,0.55);
+    }
+
+    footer span {
+        color: #ffd700;
+    }
+
+    /* =========================
+       TABLET
+    ========================= */
+
+    @media (max-width: 950px) {
+
+        .about-hero {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 45px;
+        }
+
+        .hero-text {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .identity-grid {
+            max-width: 600px;
+            margin: 25px auto 0;
+        }
+
+        .interest-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 600px) {
+
+        .page-container {
+            width: 92%;
+            padding-top: 80px;
+            padding-bottom: 90px;
+        }
+
+        .home-button {
+            top: 12px;
+            left: 12px;
+            padding: 8px 14px;
+            font-size: 0.78rem;
+        }
+
+        .page-title {
+            margin-bottom: 40px;
+        }
+
+        .page-title h1 {
+            font-size: 2rem;
+        }
+
+        .photo-frame {
+            width: 225px;
+            height: 225px;
+        }
+
+        .hero-text h2 {
+            font-size: 1.65rem;
+        }
+
+        .hero-text p {
+            font-size: 0.9rem;
+        }
+
+        .identity-grid {
+            grid-template-columns: 1fr;
+            max-width: 300px;
+        }
+
+        .interest-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .founder-card,
+        .perspective {
+            padding: 24px 20px;
+        }
+
+        .founder-card h3 {
+            font-size: 1.25rem;
+        }
+
+        .mini-contact-card {
+            width: 94%;
+            margin: 35px auto 30px;
+            padding: 21px 16px;
+            border-radius: 16px;
+        }
+
+        .mini-contact-details {
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .mini-contact-btn {
+            padding: 9px 22px;
+        }
+
+        .mini-email-link {
+            font-size: 0.78rem;
+            word-break: break-word;
+        }
+    }
+
+    /* =========================
+       VERY SMALL PHONES
+    ========================= */
+
+    @media (max-width: 380px) {
+
+        .page-container {
+            width: 94%;
+        }
+
+        .photo-frame {
+            width: 190px;
+            height: 190px;
+        }
+
+        .page-title h1 {
+            font-size: 1.7rem;
+        }
+
+        .mini-contact-content h2 {
+            font-size: 1.15rem;
+        }
+
+        .mini-contact-content p {
+            font-size: 0.78rem;
+        }
+    }
+</style>
+
+</head><body><!-- =========================
+     ANIMATED BACKGROUND
+========================== -->
+
+<div class="background">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+</div>
+
+
+<!-- =========================
+     HOME / BACK BUTTON
+========================== -->
+
+<a href="index.html" class="home-button">
+    ← Home
+</a>
+
+
+<!-- =========================
+     MAIN CONTENT
+========================== -->
+
+<main class="page-container">
+
+    <!-- PAGE TITLE -->
+
+    <header class="page-title">
+
+        <h1>Get to Know Me</h1>
+
+        <p>
+            A personal space where technology, curiosity,
+            creativity and meaningful ideas come together.
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         ABOUT HERO
+    ========================== -->
+
+    <section class="about-hero">
+
+        <!-- PHOTO -->
+
+        <div class="photo-area">
+
+            <div class="photo-frame">
+
+                <div class="photo-inner">
+
+                    <!--
+                        Replace profile.jpg with
+                        your actual photograph.
+                    -->
+
+                    <img
+                        src="amos.jpg"
+                        alt="Profile photo"
+                        class="profile-photo"
+                    >
+
+                </div>
+
+                <div class="dot one"></div>
+                <div class="dot two"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- INTRODUCTION -->
+
+        <div class="hero-text">
+
+            <h2>
+                Hello, I'm <span>Amos</span>
+            </h2>
+
+            <p>
+                I am passionate about exploring ideas,
+                creating digital solutions and discovering
+                opportunities where technology can make
+                a meaningful difference.
+            </p>
+
+            <p>
+                My interests extend beyond technology.
+                I am enthusiastic about law, passionate
+                about medicine and enjoy adventure as a
+                way of discovering new perspectives.
+            </p>
+
+
+            <!-- IDENTITY CARDS -->
+
+            <div class="identity-grid">
+
+                <div class="identity-card">
+                    <strong>Founder</strong>
+                    <span>Horizon Technologies</span>
+                </div>
+
+                <div class="identity-card">
+                    <strong>Law</strong>
+                    <span>Enthusiastic Learner</span>
+                </div>
+
+                <div class="identity-card">
+                    <strong>Medicine</strong>
+                    <span>Passionate Interest</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+  <!-- =========================
+         HORIZON TECHNOLOGIES
+    ========================== -->
+
+    <section class="content-section">
+
+        <div class="section-title">
+
+            <h2>Horizon Technologies</h2>
+
+            <p>
+                Building practical digital solutions
+                for modern needs.
+            </p>
+
+        </div>
+
+
+        <div class="founder-card">
+
+            <h3>
+                Founder of
+                <span>Horizon Technologies</span>
+            </h3>
+
+            <p>
+                Horizon Technologies is a technology
+                company focused on providing innovative,
+                reliable and affordable digital solutions.
+                Its work covers areas such as software
+                development, branding, graphic design,
+                tutoring, data analysis and computer
+                networking.
+            </p>
+
+            <a
+                href="https://horizontec.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="founder-button"
+            >
+                Visit Horizon Technologies
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BEYOND TECHNOLOGY
+    ========================== -->
+
+    <section class="content-section">
+
+        <div class="section-title">
+
+            <h2>Beyond Technology</h2>
+
+            <p>
+                My curiosity extends into several areas
+                that shape how I see the world.
+            </p>
+
+        </div>
+
+
+        <div class="interest-grid">
+
+            <article class="interest-card">
+
+                <h3>Law</h3>
+
+                <p>
+                    I have a strong enthusiasm for law
+                    and an interest in understanding
+                    justice, society, rights and
+                    responsible decision-making.
+                </p>
+
+            </article>
+
+
+            <article class="interest-card">
+
+                <h3>Medicine</h3>
+
+                <p>
+                    Medicine is another field that
+                    fascinates me, particularly the
+                    connection between science,
+                    technology and human wellbeing.
+                </p>
+
+            </article>
+
+
+            <article class="interest-card">
+
+                <h3>Adventure</h3>
+
+                <p>
+                    Adventure gives me an opportunity
+                    to explore new environments,
+                    experience different perspectives
+                    and keep learning outside familiar
+                    surroundings.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MY PERSPECTIVE
+    ========================== -->
+
+    <section class="content-section">
+
+        <div class="section-title">
+
+            <h2>My Perspective</h2>
+
+        </div>
+
+
+        <div class="perspective">
+
+            <p>
+                I believe meaningful growth comes from
+                remaining curious. Technology provides
+                powerful tools for solving problems, while
+                fields such as law and medicine provide
+                important perspectives on people and
+                society. Adventure adds another dimension
+                by encouraging exploration and discovery.
+                I aim to keep learning, creating and
+                connecting these different interests in
+                useful ways.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SMALL CONTACT CARD
+    ========================== -->
+
+    <section class="mini-contact-card">
+
+        <div class="mini-contact-content">
+
+            <h2>Let's Connect</h2>
+
+            <p>
+                Have a project, question, or idea?
+                I'd be happy to hear from you.
+            </p>
+
+            <div class="mini-contact-details">
+
+                <a
+                    href="contact.html"
+                    class="mini-contact-btn"
+                >
+                    Contact Me
+                </a>
+
+                <!--
+                    Replace this email with your
+                    actual email address.
+                -->
+
+                <a
+                    href="mailto:horintechie@gmail.com"
+                    class="mini-email-link"
+                >
+                    horintechie@gmail.com
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+    © <span id="currentYear"></span>
+    Horizon Technologies. All Rights Reserved.
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script>
+
+    /* Auto-renewing year */
+
+    document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+
+
+    /* Subtle page-load effect */
+
+    window.addEventListener("load", function () {
+
+        document.body.classList.add("page-loaded");
+
+    });
+
+</script>
+</body>
+</html>

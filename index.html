@@ -1,0 +1,3307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>amosnyabwari</title>
+
+
+<style>
+
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: #ffffff;
+
+    background: #061326;
+
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   ANIMATED NAVY BACKGROUND
+========================================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -10;
+
+    background:
+        linear-gradient(
+            135deg,
+            #020916,
+            #061326,
+            #0b1d37,
+            #061326,
+            #020916
+        );
+
+    background-size: 500% 500%;
+
+    animation:
+        navyBackground 18s ease infinite;
+}
+
+
+@keyframes navyBackground {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* =========================================================
+   DIAGONAL MOVING WHITE BUBBLES
+========================================================= */
+
+.bubbles {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: -5;
+}
+
+
+.bubble {
+
+    position: absolute;
+
+    bottom: -150px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.25);
+
+    box-shadow:
+        0 0 20px
+        rgba(255,255,255,0.04);
+
+    animation:
+        diagonalBubble
+        linear infinite;
+}
+
+
+.bubble:nth-child(1) {
+
+    width: 30px;
+    height: 30px;
+
+    left: 5%;
+
+    animation-duration: 14s;
+}
+
+
+.bubble:nth-child(2) {
+
+    width: 70px;
+    height: 70px;
+
+    left: 17%;
+
+    animation-duration: 20s;
+
+    animation-delay: 2s;
+}
+
+
+.bubble:nth-child(3) {
+
+    width: 22px;
+    height: 22px;
+
+    left: 31%;
+
+    animation-duration: 12s;
+
+    animation-delay: 4s;
+}
+
+
+.bubble:nth-child(4) {
+
+    width: 95px;
+    height: 95px;
+
+    left: 48%;
+
+    animation-duration: 23s;
+
+    animation-delay: 1s;
+}
+
+
+.bubble:nth-child(5) {
+
+    width: 45px;
+    height: 45px;
+
+    left: 66%;
+
+    animation-duration: 16s;
+
+    animation-delay: 5s;
+}
+
+
+.bubble:nth-child(6) {
+
+    width: 25px;
+    height: 25px;
+
+    left: 82%;
+
+    animation-duration: 13s;
+
+    animation-delay: 3s;
+}
+
+
+.bubble:nth-child(7) {
+
+    width: 85px;
+    height: 85px;
+
+    left: 94%;
+
+    animation-duration: 22s;
+}
+
+
+@keyframes diagonalBubble {
+
+    0% {
+
+        transform:
+            translate(0, 0)
+            rotate(0deg);
+
+        opacity: 0;
+
+    }
+
+    10% {
+
+        opacity: 1;
+
+    }
+
+    50% {
+
+        transform:
+            translate(-120px, -60vh)
+            rotate(180deg);
+
+    }
+
+    100% {
+
+        transform:
+            translate(-300px, -125vh)
+            rotate(360deg);
+
+        opacity: 0;
+
+    }
+}
+
+
+/* =========================================================
+   MAIN 20% / 80% STRUCTURE
+========================================================= */
+
+.website {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: grid;
+
+    grid-template-columns: 20% 80%;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   LEFT 20% PARTITION
+========================================================= */
+
+.sidebar {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding:
+        35px
+        20px
+        25px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(2,9,22,0.98),
+            rgba(6,19,38,0.96)
+        );
+
+    border-right:
+        2px solid
+        rgba(246,196,83,0.35);
+
+    display: flex;
+
+    flex-direction: column;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+   IDENTITY
+========================================================= */
+
+.identity {
+
+    text-align: center;
+
+    margin-bottom: 22px;
+}
+
+
+.identity-name {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(1.3rem, 2vw, 2rem);
+
+    line-height: 1.15;
+
+    color: #ffffff;
+}
+
+
+.identity-name span {
+
+    color: #f6c453;
+}
+
+
+.identity-title {
+
+    margin-top: 9px;
+
+    color: #f2a33b;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 1.5px;
+
+    line-height: 1.5;
+
+    text-transform: uppercase;
+}
+
+
+.gold-line {
+
+    width: 65%;
+
+    height: 2px;
+
+    margin:
+        18px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f6c453,
+            #f2a33b,
+            #ffffff
+        );
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.navigation a {
+
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    padding:
+        12px
+        8px;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    font-size: 0.82rem;
+
+    letter-spacing: 0.5px;
+
+    border:
+        1px solid
+        rgba(246,196,83,0.38);
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(246,196,83,0.05),
+            rgba(255,255,255,0.03)
+        );
+
+    overflow: hidden;
+
+    transition:
+        0.3s ease;
+}
+
+
+.navigation a::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -110%;
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.2),
+            transparent
+        );
+
+    transition:
+        0.5s ease;
+}
+
+
+.navigation a:hover::before {
+
+    left: 110%;
+}
+
+
+.navigation a:hover {
+
+    transform:
+        translateX(4px);
+
+    color: #061326;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f6c453,
+            #f2a33b,
+            #ffffff
+        );
+
+    border-color: #ffffff;
+
+    box-shadow:
+        0 8px 22px
+        rgba(246,196,83,0.2);
+}
+
+
+/* =========================================================
+   FREELANCE BOX
+========================================================= */
+
+.freelance {
+
+    margin-top: 25px;
+
+    padding:
+        17px
+        12px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(246,196,83,0.45);
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(246,196,83,0.18),
+            rgba(242,163,59,0.08),
+            rgba(255,255,255,0.06)
+        );
+}
+
+
+.freelance strong {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #f6c453;
+
+    font-size: 0.82rem;
+
+    line-height: 1.4;
+}
+
+
+.freelance p {
+
+    color:
+        rgba(255,255,255,0.72);
+
+    font-size: 0.7rem;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   ADDITIONAL SIDEBAR INFORMATION
+========================================================= */
+
+.sidebar-info {
+
+    margin-top: 24px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,0.65);
+
+    font-size: 0.7rem;
+
+    line-height: 1.8;
+}
+
+
+.sidebar-info span {
+
+    color: #f6c453;
+}
+
+
+/* =========================================================
+   SIDEBAR FOOTER
+========================================================= */
+
+.sidebar-footer {
+
+    margin-top: auto;
+
+    padding-top: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,0.55);
+
+    font-size: 0.68rem;
+}
+
+
+.sidebar-footer span {
+
+    color: #f6c453;
+}
+
+
+/* =========================================================
+   RIGHT 80% PARTITION
+========================================================= */
+
+.main-content {
+
+    width: 100%;
+
+    min-width: 0;
+
+    min-height: 100vh;
+
+    padding:
+        35px
+        5%
+        45px;
+
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   MAIN NAME HEADER
+========================================================= */
+
+.main-header {
+
+    width: 100%;
+
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+
+.main-header h1 {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(2rem, 4vw, 4rem);
+
+    line-height: 1.1;
+
+    color: #ffffff;
+
+    letter-spacing: 1px;
+}
+
+
+.main-header h1 span {
+
+    color: #f6c453;
+}
+
+
+.main-header h2 {
+
+    margin-top: 10px;
+
+    color: #f2a33b;
+
+    font-size:
+        clamp(0.75rem, 1.4vw, 1.15rem);
+
+    font-weight: 500;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================================================
+   COMMON CONTENT SECTION
+========================================================= */
+
+.content-section {
+
+    width: 100%;
+
+    margin-bottom: 65px;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(246,196,83,0.25);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.08),
+            rgba(246,196,83,0.045),
+            rgba(242,163,59,0.065)
+        );
+
+    backdrop-filter: blur(8px);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,0.25);
+}
+
+
+/* =========================================================
+   SECTION HEADINGS
+========================================================= */
+
+.section-heading {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+
+.section-heading h2 {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(1.6rem, 3vw, 2.4rem);
+}
+
+
+.section-heading h2 span {
+
+    color: #f6c453;
+}
+
+
+.section-heading p {
+
+    margin-top: 8px;
+
+    color:
+        rgba(255,255,255,0.68);
+
+    font-size: 0.85rem;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   INTRODUCTION SECTION
+========================================================= */
+
+.intro-section {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        1.25fr
+        0.75fr;
+
+    gap: 45px;
+
+    align-items: center;
+}
+
+
+.intro-text h3 {
+
+    color: #f6c453;
+
+    font-size: 0.9rem;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 12px;
+}
+
+
+.intro-text h2 {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(2rem, 4vw, 3.5rem);
+
+    line-height: 1.1;
+
+    color: #ffffff;
+
+    margin-bottom: 20px;
+}
+
+
+.intro-text h2 span {
+
+    color: #f2a33b;
+}
+
+
+.intro-text p {
+
+    color:
+        rgba(255,255,255,0.76);
+
+    line-height: 1.9;
+
+    font-size: 0.92rem;
+
+    margin-bottom: 14px;
+}
+
+
+/* =========================================================
+   INTRO BUTTON
+========================================================= */
+
+.intro-button {
+
+    display: inline-block;
+
+    margin-top: 12px;
+
+    padding:
+        12px
+        24px;
+
+    color: #061326;
+
+    font-size: 0.8rem;
+
+    font-weight: bold;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f6c453,
+            #f2a33b,
+            #ffffff
+        );
+
+    transition:
+        0.3s ease;
+}
+
+
+.intro-button:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 12px 28px
+        rgba(246,196,83,0.25);
+}
+
+ /* =========================
+       PROFILE PHOTO
+    ========================= */
+
+    .photo-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .photo-frame {
+        width: 290px;
+        height: 290px;
+        border-radius: 50%;
+        padding: 7px;
+
+        position: relative;
+
+        background: conic-gradient(
+            from 0deg,
+            #ffd700,
+            white,
+            #ffd700,
+            transparent,
+            #ffd700
+        );
+
+        animation: rotateFrame 7s linear infinite;
+
+        box-shadow:
+            0 0 25px rgba(255,215,0,0.35),
+            0 0 70px rgba(255,215,0,0.12);
+    }
+
+    .photo-frame::before {
+        content: "";
+        position: absolute;
+        inset: -12px;
+
+        border: 1px solid rgba(255,215,0,0.4);
+        border-radius: 50%;
+
+        animation: pulseFrame 3s ease-in-out infinite;
+    }
+
+    .photo-inner {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #0a1d42;
+        border: 5px solid #06132d;
+        position: relative;
+    }
+
+    .profile-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+
+        transition: transform 0.6s ease;
+    }
+
+    .photo-frame:hover .profile-photo {
+        transform: scale(1.08);
+    }
+
+    @keyframes rotateFrame {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes pulseFrame {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 0.4;
+        }
+
+        50% {
+            transform: scale(1.06);
+            opacity: 0.9;
+        }
+    }
+
+    /* Decorative dots */
+
+    .dot {
+        position: absolute;
+        width: 11px;
+        height: 11px;
+        background: #ffd700;
+        border-radius: 50%;
+        box-shadow: 0 0 12px rgba(255,215,0,0.8);
+    }
+
+    .dot.one {
+        top: 20px;
+        right: 20px;
+        animation: floatingDot 3s ease-in-out infinite;
+    }
+
+    .dot.two {
+        bottom: 35px;
+        left: 10px;
+        animation: floatingDot 4s ease-in-out infinite reverse;
+    }
+
+    @keyframes floatingDot {
+        0%,100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-15px);
+        }
+    }
+
+
+
+/* =========================================================
+   SERVICES GRID
+========================================================= */
+
+.services-grid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   SERVICE CARD
+========================================================= */
+
+.service-card {
+
+    min-height: 245px;
+
+    padding:
+        23px
+        18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    border:
+        1px solid
+        rgba(246,196,83,0.25);
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.08),
+            rgba(246,196,83,0.05)
+        );
+
+    transition:
+        0.35s ease;
+}
+
+
+.service-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(246,196,83,0.75);
+
+    box-shadow:
+        0 15px 35px
+        rgba(246,196,83,0.14);
+}
+
+
+.service-card h3 {
+
+    color: #f6c453;
+
+    font-size: 1rem;
+
+    line-height: 1.4;
+
+    margin-bottom: 12px;
+  
+    text-align: center;
+}
+
+
+.service-card p {
+
+    flex: 1;
+
+    color:
+        rgba(255,255,255,0.7);
+
+    font-size: 0.8rem;
+
+    line-height: 1.7;
+    
+    text-align: center;
+}
+
+
+/* =========================================================
+   BOOK SERVICE
+========================================================= */
+
+.book-service {
+
+    width: 100%;
+
+    margin-top: 18px;
+  
+    text-align: center;
+
+    padding:
+        10px
+        12px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    color: #061326;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f6c453,
+            #f2a33b,
+            #ffffff
+        );
+
+    font-size: 0.77rem;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        0.3s ease;
+}
+
+
+.book-service:hover {
+
+    transform:
+        scale(1.03);
+
+    box-shadow:
+        0 8px 20px
+        rgba(246,196,83,0.2);
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects-grid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+.project-card {
+
+    padding: 24px;
+    
+    text-align: center;
+  
+    border:
+        1px solid
+        rgba(246,196,83,0.28);
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.08),
+            rgba(242,163,59,0.06)
+        );
+
+    transition:
+        0.3s ease;
+}
+
+
+.project-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(246,196,83,0.8);
+}
+
+
+/*
+   ICONS ARE USED ONLY IN PROJECTS
+*/
+
+.project-icon {
+
+    font-size: 2rem;
+
+    margin-bottom: 14px;
+  
+    text-align: center;
+}
+
+
+.project-card h3 {
+
+    color: #ffffff;
+
+    margin-bottom: 10px;
+
+    font-size: 1rem;
+   
+    text-align: center;
+}
+
+
+.project-card p {
+
+    color:
+        rgba(255,255,255,0.67);
+
+    font-size: 0.8rem;
+
+    line-height: 1.7;
+    
+    text-align: center;
+}
+
+
+.project-link {
+
+    display: inline-block;
+
+    margin-top: 15px;
+  
+    text-align: center;
+
+    color: #f6c453;
+
+    font-size: 0.78rem;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   CONTACT MODAL OVERLAY
+========================================================= */
+
+.modal-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0,0,0,0.78);
+
+    backdrop-filter: blur(8px);
+}
+
+
+.modal-overlay.active {
+
+    display: flex;
+
+    animation:
+        fadeIn 0.3s ease;
+}
+
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   CONTACT WINDOW
+========================================================= */
+
+.contact-modal {
+
+    position: relative;
+
+    width:
+        min(100%, 520px);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 30px;
+
+    border:
+        1px solid
+        rgba(246,196,83,0.5);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #07162a,
+            #0b203c
+        );
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,0.55);
+
+    animation:
+        modalOpen 0.35s ease;
+}
+
+
+@keyframes modalOpen {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.95);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+}
+
+
+/* =========================================================
+   MODAL HEADER
+========================================================= */
+
+.modal-header {
+
+    text-align: center;
+
+    margin-bottom: 23px;
+}
+
+
+.modal-header h2 {
+
+    color: #f6c453;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 1.6rem;
+}
+
+
+.modal-header p {
+
+    margin-top: 8px;
+
+    color:
+        rgba(255,255,255,0.65);
+
+    font-size: 0.78rem;
+}
+
+
+.modal-header strong {
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   CONTACT OPTIONS
+========================================================= */
+
+.contact-options {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+
+.contact-option {
+
+    padding:
+        13px;
+
+    border:
+        1px solid
+        rgba(246,196,83,0.35);
+
+    border-radius: 8px;
+
+    color: #ffffff;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    cursor: pointer;
+
+    transition:
+        0.3s ease;
+}
+
+
+.contact-option:hover,
+.contact-option.selected {
+
+    color: #061326;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f6c453,
+            #f2a33b,
+            #ffffff
+        );
+}
+
+
+/* =========================================================
+   CONTACT FORMS
+========================================================= */
+
+.contact-form {
+
+    display: none;
+}
+
+
+.contact-form.active {
+
+    display: block;
+}
+
+
+.form-group {
+
+    margin-bottom: 16px;
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #f6c453;
+
+    font-size: 0.77rem;
+}
+
+
+.form-group input,
+.form-group textarea {
+
+    width: 100%;
+
+    padding:
+        12px
+        13px;
+
+    color: #ffffff;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid
+        rgba(246,196,83,0.3);
+
+    border-radius: 8px;
+
+    outline: none;
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus {
+
+    border-color:
+        #f6c453;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(246,196,83,0.08);
+}
+
+
+.form-group textarea {
+
+    min-height: 120px;
+
+    resize: vertical;
+}
+
+
+.send-button {
+
+    width: 100%;
+
+    padding:
+        13px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    color: #061326;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f6c453,
+            #f2a33b,
+            #ffffff
+        );
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        0.3s ease;
+}
+
+
+.send-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(246,196,83,0.2);
+}
+
+
+/* =========================================================
+   MAIN FOOTER
+========================================================= */
+
+.main-footer {
+
+    width: 100%;
+
+    padding:
+        20px 0;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,0.6);
+
+    font-size: 0.72rem;
+}
+
+
+.main-footer span {
+
+    color: #f6c453;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px)
+and (min-width: 751px) {
+
+    .website {
+
+        grid-template-columns:
+            25%
+            75%;
+    }
+
+
+    .services-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .projects-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .intro-section {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .photo-frame {
+
+        width:
+            min(70%, 330px);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 750px) {
+
+    .website {
+
+        display: block;
+
+        width: 100%;
+    }
+
+
+    .sidebar {
+
+        width: 100%;
+
+        min-height: auto;
+
+        padding:
+            25px
+            18px;
+
+        border-right: none;
+
+        border-bottom:
+            2px solid
+            rgba(246,196,83,0.35);
+    }
+
+
+    .main-content {
+
+        width: 100%;
+
+        min-height: auto;
+
+        padding:
+            30px
+            15px
+            40px;
+    }
+
+
+    .navigation {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 8px;
+    }
+
+
+    .navigation a {
+
+        font-size: 0.76rem;
+
+        padding:
+            11px
+            7px;
+    }
+
+
+    .sidebar-info {
+
+        display: none;
+    }
+
+
+    .sidebar-footer {
+
+        margin-top: 20px;
+    }
+
+
+    .main-header {
+
+        margin-bottom: 30px;
+    }
+
+
+    .main-header h1 {
+
+        font-size:
+            clamp(2rem, 10vw, 3rem);
+    }
+
+
+    .main-header h2 {
+
+        font-size: 0.72rem;
+
+        letter-spacing: 1.5px;
+
+        line-height: 1.6;
+    }
+
+
+    .content-section {
+
+        padding:
+            23px
+            16px;
+
+        margin-bottom: 40px;
+    }
+
+
+    .intro-section {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 30px;
+    }
+
+
+    .intro-text {
+
+        text-align: center;
+    }
+
+
+    .photo-frame {
+
+        width:
+            min(90%, 310px);
+    }
+
+
+    .services-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .projects-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 430px) {
+
+    .navigation {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .content-section {
+
+        padding:
+            20px
+            14px;
+    }
+
+
+    .intro-text h2 {
+
+        font-size:
+            2rem;
+    }
+
+
+    .contact-options {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .contact-modal {
+
+        padding:
+            24px
+            18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     ANIMATED BACKGROUND
+======================================================= -->
+
+<div class="bubbles">
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+</div>
+
+
+
+<!-- =======================================================
+     MAIN WEBSITE
+======================================================= -->
+
+<div class="website">
+
+
+<!-- =======================================================
+     20% LEFT PARTITION
+======================================================= -->
+
+<aside class="sidebar">
+
+
+    <!-- IDENTITY -->
+
+    <div class="identity">
+       
+        <!-- PHOTO -->
+
+        <div class="photo-area">
+
+            <div class="photo-frame">
+
+                <div class="photo-inner">
+
+                    <!--
+                        Replace profile.jpg with
+                        your actual photograph.
+                    -->
+
+                    <img
+                        src="amos.jpg"
+                        alt="Profile photo"
+                        class="profile-photo"
+                    >
+
+                </div>
+
+                <div class="dot one"></div>
+                <div class="dot two"></div>
+
+            </div>
+
+        </div>
+
+      <br><br><br>
+        <div class="identity-name">
+
+            M. A.  <span>Nyabwari</span>
+
+        </div>
+
+
+        <div class="identity-title">
+
+            Computer Science & Technology
+
+        </div>
+
+
+        <div class="gold-line"></div>
+
+    </div>
+
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="navigation">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="skills.html">
+            Skills
+        </a>
+
+        <a href="blog.html">
+            Blog
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+        <a href="admin.html">
+            Admin
+        </a>
+
+    </nav>
+
+
+
+    <!-- FREELANCE -->
+
+    <div class="freelance">
+
+        <strong>
+            Available for freelance projects
+        </strong>
+
+
+        <p>
+
+            Open to selected technology,
+            software and digital projects.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- ADDITIONAL INFORMATION -->
+
+    <div class="sidebar-info">
+
+        <p>
+            <span>Focus:</span>
+            Technology & Innovation
+        </p>
+
+        <p>
+            <span>Approach:</span>
+            Creative & Solution Driven
+        </p>
+
+        <p>
+            <span>Availability:</span>
+            Project Based
+        </p>
+
+    </div>
+
+
+
+    <!-- SIDEBAR FOOTER -->
+
+    <div class="sidebar-footer">
+
+        ©
+        <span id="sidebarYear"></span>
+
+        HT
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =======================================================
+     80% RIGHT PARTITION
+======================================================= -->
+
+<main class="main-content">
+
+    <!-- ===================================================
+         SECTION 1 — INTRODUCTION
+    ==================================================== -->
+
+    <section class="content-section">
+
+
+        <div class="intro-section">
+
+
+            <!-- INTRO TEXT -->
+
+            <div class="intro-text">
+
+                <h3>
+
+                    Welcome to my digital space
+
+                </h3>
+
+
+                <h2>
+
+                    Building Ideas Into
+                    <span>Technology</span>
+
+                </h2>
+
+
+                <p>
+
+                    I am a technology-focused professional
+                    with a background in Computer Science
+                    and an interest in software development,
+                    digital solutions, data, networking and
+                    modern technology.
+
+                </p>
+
+
+                <p>
+
+                    I enjoy transforming ideas and practical
+                    challenges into useful, reliable and
+                    user-friendly technology solutions.
+
+                </p>
+
+
+                <a
+                    href="about.html"
+                    class="intro-button"
+                >
+
+                    Explore My Profile
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         SECTION 2 — SERVICES
+    ==================================================== -->
+
+    <section class="content-section">
+
+
+        <div class="section-heading">
+
+            <h2>
+
+                My <span>Services</span>
+
+            </h2>
+
+
+            <p>
+
+                Technology solutions designed around
+                practical needs and real-world challenges.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="services-grid">
+
+
+            <!-- SERVICE 1 -->
+
+            <article class="service-card">
+
+                <h3>
+                    Software Development
+                </h3>
+
+
+                <p>
+
+                    Development of responsive websites,
+                    desktop applications and customized
+                    software solutions.
+
+                </p>
+
+
+                <button
+                    class="book-service"
+                    data-service="Software Development"
+                >
+
+                    Book Service
+
+                </button>
+
+            </article>
+
+
+
+            <!-- SERVICE 2 -->
+
+            <article class="service-card">
+
+                <h3>
+                    Data Analysis
+                </h3>
+
+
+                <p>
+
+                    Data preparation, analysis,
+                    visualization and development of
+                    meaningful insights from datasets.
+
+                </p>
+
+
+                <button
+                    class="book-service"
+                    data-service="Data Analysis"
+                >
+
+                    Book Service
+
+                </button>
+
+            </article>
+
+
+
+            <!-- SERVICE 3 -->
+
+            <article class="service-card">
+
+                <h3>
+                    Computer Networking
+                </h3>
+
+
+                <p>
+
+                    Network setup, configuration,
+                    troubleshooting and general
+                    computer networking solutions.
+
+                </p>
+
+
+                <button
+                    class="book-service"
+                    data-service="Computer Networking"
+                >
+
+                    Book Service
+
+                </button>
+
+            </article>
+
+
+
+            <!-- SERVICE 4 -->
+
+            <article class="service-card">
+
+                <h3>
+                    Graphic & Digital Design
+                </h3>
+
+
+                <p>
+
+                    Digital graphics, branding materials,
+                    visual layouts and creative technology
+                    solutions.
+
+                </p>
+
+
+                <button
+                    class="book-service"
+                    data-service="Graphic & Digital Design"
+                >
+
+                    Book Service
+
+                </button>
+
+            </article>
+
+
+
+            <!-- SERVICE 5 -->
+
+            <article class="service-card">
+
+                <h3>
+                    Computer Packages
+                </h3>
+
+
+                <p>
+
+                    Training and practical support in
+                    commonly used computer applications
+                    and digital productivity tools.
+
+                </p>
+
+
+                <button
+                    class="book-service"
+                    data-service="Computer Packages"
+                >
+
+                    Book Service
+
+                </button>
+
+            </article>
+
+
+
+            <!-- SERVICE 6 -->
+
+            <article class="service-card">
+
+                <h3>
+                    IT Support
+                </h3>
+
+
+                <p>
+
+                    General computer troubleshooting,
+                    software support, system setup and
+                    technology assistance.
+
+                </p>
+
+
+                <button
+                    class="book-service"
+                    data-service="IT Support"
+                >
+
+                    Book Service
+
+                </button>
+
+            </article>
+
+
+
+            <!-- SERVICE 7 -->
+
+            <article class="service-card">
+
+                <h3>
+                    Technology Training
+                </h3>
+
+
+                <p>
+
+                    Practical technology lessons covering
+                    programming, computing concepts and
+                    digital skills.
+
+                </p>
+
+
+                <button
+                    class="book-service"
+                    data-service="Technology Training"
+                >
+
+                    Book Service
+
+                </button>
+
+            </article>
+
+
+
+            <!-- SERVICE 8 -->
+
+            <article class="service-card">
+
+                <h3>
+                    Database Solutions
+                </h3>
+
+
+                <p>
+
+                    Database design, data organization,
+                    management and development of
+                    database-driven applications.
+
+                </p>
+
+
+                <button
+                    class="book-service"
+                    data-service="Database Solutions"
+                >
+
+                    Book Service
+
+                </button>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+  SECTION 3 — PROJECTS
+    ==================================================== -->
+
+    <section class="content-section">
+
+
+        <div class="section-heading">
+
+            <h2>
+
+                Selected <span>Projects</span>
+
+            </h2>
+
+
+            <p>
+
+                A selection of technology projects
+                and digital solutions.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="projects-grid">
+
+
+            <!-- PROJECT 1 -->
+
+            <article class="project-card">
+
+                <div class="project-icon">
+                    💻
+                </div>
+
+
+                <h3>
+                    Software Applications
+                </h3>
+
+
+                <p>
+
+                    Customized applications developed
+                    to solve practical problems and
+                    improve digital workflows.
+
+                </p>
+
+
+                <a
+                    href="contact.html"
+                    class="project-link"
+                >
+
+                    Know More
+
+                </a>
+
+            </article>
+
+
+
+            <!-- PROJECT 2 -->
+
+            <article class="project-card">
+
+                <div class="project-icon">
+                    📊
+                </div>
+
+
+                <h3>
+                    Data Analysis Systems
+                </h3>
+
+
+                <p>
+
+                    Data analysis and visualization
+                    projects designed to transform raw
+                    information into useful insights.
+
+                </p>
+
+
+                <a
+                    href="contact.html"
+                    class="project-link"
+                >
+
+                    Know More
+
+                </a>
+
+            </article>
+
+
+
+            <!-- PROJECT 3 -->
+
+            <article class="project-card">
+
+                <div class="project-icon">
+                    🌐
+                </div>
+
+
+                <h3>
+                    Web Platforms
+                </h3>
+
+
+                <p>
+
+                    Responsive web platforms and
+                    information systems built for
+                    different digital requirements.
+
+                </p>
+
+
+                <a
+                    href="contact.html"
+                    class="project-link"
+                >
+
+                    Know More
+
+                </a>
+
+            </article>
+
+
+
+            <!-- PROJECT 4 -->
+
+            <article class="project-card">
+
+                <div class="project-icon">
+                    🗄️
+                </div>
+
+
+                <h3>
+                    Database Systems
+                </h3>
+
+
+                <p>
+
+                    Structured information systems
+                    designed for reliable data storage,
+                    retrieval and management.
+
+                </p>
+
+
+                <a
+                    href="contact.html"
+                    class="project-link"
+                >
+
+                    Know More
+
+                </a>
+
+            </article>
+
+
+
+            <!-- PROJECT 5 -->
+
+            <article class="project-card">
+
+                <div class="project-icon">
+                    🔐
+                </div>
+
+
+                <h3>
+                    Information Systems
+                </h3>
+
+
+                <p>
+
+                    Digital systems incorporating
+                    authentication, structured workflows
+                    and organized information.
+
+                </p>
+
+
+                <a
+                    href="contact.html"
+                    class="project-link"
+                >
+
+                    Know More
+
+                </a>
+
+            </article>
+
+
+
+            <!-- PROJECT 6 -->
+
+            <article class="project-card">
+
+                <div class="project-icon">
+                    ⚙️
+                </div>
+
+
+                <h3>
+                    Digital Solutions
+                </h3>
+
+
+                <p>
+
+                    Practical technology solutions
+                    developed around specific business
+                    and individual requirements.
+
+                </p>
+
+
+                <a
+                    href="contact.html"
+                    class="project-link"
+                >
+
+                    Know More
+
+                </a>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         AUTO-RENEWING FOOTER
+    ==================================================== -->
+
+    <footer class="main-footer">
+
+        ©
+        <span id="mainYear"></span>
+
+        Horizon Technologies.
+
+        All Rights Reserved.
+
+    </footer>
+
+
+</main>
+
+</div>
+
+
+
+<!-- =======================================================
+     CONTACT MODAL
+======================================================= -->
+
+<div
+    class="modal-overlay"
+    id="contactModal"
+>
+
+
+    <div class="contact-modal">
+
+
+        <!-- HEADER -->
+
+        <div class="modal-header">
+
+            <h2>
+                Book a Service
+            </h2>
+
+
+            <p>
+
+                Selected service:
+
+                <strong id="selectedService">
+                    -
+                </strong>
+
+            </p>
+
+        </div>
+
+
+
+        <!-- CONTACT OPTIONS -->
+
+        <div class="contact-options">
+
+
+            <button
+                type="button"
+                class="contact-option"
+                id="whatsappOption"
+            >
+
+                WhatsApp
+
+            </button>
+
+
+            <button
+                type="button"
+                class="contact-option"
+                id="gmailOption"
+            >
+
+                Gmail
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             WHATSAPP FORM
+        ================================================== -->
+
+        <form
+            class="contact-form"
+            id="whatsappForm"
+        >
+
+
+            <div class="form-group">
+
+                <label for="whatsappName">
+
+                    Your Name
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="whatsappName"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="whatsappReason">
+
+                    Reason for Contact
+
+                </label>
+
+
+                <textarea
+                    id="whatsappReason"
+                    placeholder="Explain what you need..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+
+            <button
+                class="send-button"
+                type="submit"
+            >
+
+                Send via WhatsApp
+
+            </button>
+
+
+        </form>
+
+
+
+        <!-- =================================================
+             GMAIL FORM
+        ================================================== -->
+
+        <form
+            class="contact-form"
+            id="gmailForm"
+        >
+
+
+            <div class="form-group">
+
+                <label for="gmailName">
+
+                    Your Name
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="gmailName"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="gmailEmail">
+
+                    Your Email
+
+                </label>
+
+
+                <input
+                    type="email"
+                    id="gmailEmail"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="gmailReason">
+
+                    Reason for Contact
+
+                </label>
+
+
+                <textarea
+                    id="gmailReason"
+                    placeholder="Explain what you need..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+
+            <button
+                class="send-button"
+                type="submit"
+            >
+
+                Send via Gmail
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
+<script>
+
+
+/* =========================================================
+   YOUR CONTACT DETAILS
+=========================================================
+
+   CHANGE THESE TWO VALUES.
+
+   WhatsApp:
+   Use international format WITHOUT + or spaces.
+
+   Example Kenya:
+   254712345678
+
+   Gmail:
+   Use the email address where you want enquiries sent.
+========================================================= */
+
+const WHATSAPP_NUMBER = "254794939065";
+
+const GMAIL_ADDRESS = "horintechie@gmail.com";
+
+
+
+/* =========================================================
+   AUTO-RENEWING YEAR
+========================================================= */
+
+const currentYear =
+    new Date().getFullYear();
+
+
+document.getElementById(
+    "sidebarYear"
+).textContent =
+    currentYear;
+
+
+document.getElementById(
+    "mainYear"
+).textContent =
+    currentYear;
+
+
+
+/* =========================================================
+   CONTACT MODAL ELEMENTS
+========================================================= */
+
+const modal =
+    document.getElementById(
+        "contactModal"
+    );
+
+
+const selectedService =
+    document.getElementById(
+        "selectedService"
+    );
+
+
+const whatsappOption =
+    document.getElementById(
+        "whatsappOption"
+    );
+
+
+const gmailOption =
+    document.getElementById(
+        "gmailOption"
+    );
+
+
+const whatsappForm =
+    document.getElementById(
+        "whatsappForm"
+    );
+
+
+const gmailForm =
+    document.getElementById(
+        "gmailForm"
+    );
+
+
+
+/* =========================================================
+   BOOK SERVICE BUTTONS
+========================================================= */
+
+const serviceButtons =
+    document.querySelectorAll(
+        ".book-service"
+    );
+
+
+serviceButtons.forEach(
+    function(button) {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                const service =
+                    this.getAttribute(
+                        "data-service"
+                    );
+
+
+                selectedService.textContent =
+                    service;
+
+
+                modal.classList.add(
+                    "active"
+                );
+
+
+                showWhatsappForm();
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   WHATSAPP OPTION
+========================================================= */
+
+function showWhatsappForm() {
+
+    whatsappForm.classList.add(
+        "active"
+    );
+
+
+    gmailForm.classList.remove(
+        "active"
+    );
+
+
+    whatsappOption.classList.add(
+        "selected"
+    );
+
+
+    gmailOption.classList.remove(
+        "selected"
+    );
+}
+
+
+whatsappOption.addEventListener(
+    "click",
+    showWhatsappForm
+);
+
+
+
+/* =========================================================
+   GMAIL OPTION
+========================================================= */
+
+function showGmailForm() {
+
+    gmailForm.classList.add(
+        "active"
+    );
+
+
+    whatsappForm.classList.remove(
+        "active"
+    );
+
+
+    gmailOption.classList.add(
+        "selected"
+    );
+
+
+    whatsappOption.classList.remove(
+        "selected"
+    );
+}
+
+
+gmailOption.addEventListener(
+    "click",
+    showGmailForm
+);
+
+
+
+/* =========================================================
+   WHATSAPP SUBMISSION
+========================================================= */
+
+whatsappForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById(
+                "whatsappName"
+            ).value.trim();
+
+
+        const reason =
+            document.getElementById(
+                "whatsappReason"
+            ).value.trim();
+
+
+        const service =
+            selectedService.textContent;
+
+
+        if (
+            !name ||
+            !reason
+        ) {
+
+            alert(
+                "Please enter your name and reason for contact."
+            );
+
+            return;
+        }
+
+
+        const message =
+
+            "Hello, my name is "
+            + name
+            + ".\n\n"
+
+            + "I would like to book your service:\n"
+            + service
+            + "\n\n"
+
+            + "Reason for contact:\n"
+            + reason;
+
+
+        const whatsappURL =
+
+            "https://wa.me/"
+            + WHATSAPP_NUMBER
+            + "?text="
+            + encodeURIComponent(
+                message
+            );
+
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   GMAIL SUBMISSION
+========================================================= */
+
+gmailForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById(
+                "gmailName"
+            ).value.trim();
+
+
+        const email =
+            document.getElementById(
+                "gmailEmail"
+            ).value.trim();
+
+
+        const reason =
+            document.getElementById(
+                "gmailReason"
+            ).value.trim();
+
+
+        const service =
+            selectedService.textContent;
+
+
+        if (
+            !name ||
+            !email ||
+            !reason
+        ) {
+
+            alert(
+                "Please complete all required fields."
+            );
+
+            return;
+        }
+
+
+        const subject =
+
+            "Service Booking - "
+            + service;
+
+
+        const body =
+
+            "Hello,\n\n"
+
+            + "My name is "
+            + name
+            + ".\n"
+
+            + "My email address is "
+            + email
+            + ".\n\n"
+
+            + "I am interested in:\n"
+            + service
+            + "\n\n"
+
+            + "Reason for contact:\n"
+            + reason
+            + "\n\n"
+
+            + "Thank you.";
+
+
+        const gmailURL =
+
+            "mailto:"
+            + GMAIL_ADDRESS
+
+            + "?subject="
+            + encodeURIComponent(
+                subject
+            )
+
+            + "&body="
+            + encodeURIComponent(
+                body
+            );
+
+
+        window.location.href =
+            gmailURL;
+
+    }
+);
+
+
+
+/* =========================================================
+   CLOSE MODAL BY CLICKING OUTSIDE
+========================================================= */
+
+modal.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target === modal
+        ) {
+
+            modal.classList.remove(
+                "active"
+            );
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   ESCAPE KEY CLOSES MODAL
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+            &&
+            modal.classList.contains(
+                "active"
+            )
+        ) {
+
+            modal.classList.remove(
+                "active"
+            );
+
+        }
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>

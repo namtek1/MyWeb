@@ -1,0 +1,2747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="description"
+    content="Nam Zone Blog - Technology, Law, Medicine, Data, Adventure and Personal Growth."
+>
+
+<title>My Blogs</title>
+
+
+<style>
+
+    /* =====================================================
+       GLOBAL RESET
+    ===================================================== */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+
+    body {
+
+        font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+
+        background: #06132d;
+
+        color: white;
+
+        min-height: 100vh;
+
+        overflow-x: hidden;
+    }
+
+
+    /* =====================================================
+       ANIMATED BACKGROUND
+    ===================================================== */
+
+    .background {
+
+        position: fixed;
+
+        inset: 0;
+
+        overflow: hidden;
+
+        z-index: -10;
+
+        background:
+
+            radial-gradient(
+                circle at top right,
+                rgba(31, 67, 130, 0.35),
+                transparent 35%
+            ),
+
+            radial-gradient(
+                circle at bottom left,
+                rgba(10, 31, 75, 0.5),
+                transparent 40%
+            ),
+
+            #06132d;
+    }
+
+
+    .bubble {
+
+        position: absolute;
+
+        width: 70px;
+        height: 70px;
+
+        border:
+            1px solid
+            rgba(255,255,255,0.18);
+
+        transform: rotate(45deg);
+
+        animation:
+            moveBubble
+            18s
+            linear
+            infinite;
+    }
+
+
+    .bubble:nth-child(1) {
+
+        left: 5%;
+        top: 10%;
+
+        width: 45px;
+        height: 45px;
+
+        animation-duration: 14s;
+    }
+
+
+    .bubble:nth-child(2) {
+
+        left: 25%;
+        top: 70%;
+
+        width: 90px;
+        height: 90px;
+
+        animation-duration: 22s;
+    }
+
+
+    .bubble:nth-child(3) {
+
+        left: 55%;
+        top: 20%;
+
+        width: 60px;
+        height: 60px;
+
+        animation-duration: 17s;
+    }
+
+
+    .bubble:nth-child(4) {
+
+        left: 80%;
+        top: 65%;
+
+        width: 100px;
+        height: 100px;
+
+        animation-duration: 25s;
+    }
+
+
+    .bubble:nth-child(5) {
+
+        left: 90%;
+        top: 15%;
+
+        width: 50px;
+        height: 50px;
+
+        animation-duration: 20s;
+    }
+
+
+    .bubble:nth-child(6) {
+
+        left: 40%;
+        top: 90%;
+
+        width: 35px;
+        height: 35px;
+
+        animation-duration: 16s;
+    }
+
+
+    @keyframes moveBubble {
+
+        0% {
+
+            transform:
+                translate(0,0)
+                rotate(45deg);
+
+            opacity: 0.15;
+        }
+
+
+        50% {
+
+            transform:
+                translate(-100px,-120px)
+                rotate(225deg);
+
+            opacity: 0.45;
+        }
+
+
+        100% {
+
+            transform:
+                translate(80px,-240px)
+                rotate(405deg);
+
+            opacity: 0.08;
+        }
+    }
+
+
+    /* =====================================================
+       HOME BUTTON
+    ===================================================== */
+
+    .home-button {
+
+        position: fixed;
+
+        top: 20px;
+        left: 20px;
+
+        z-index: 100;
+
+        padding:
+            10px
+            18px;
+
+        color: white;
+
+        text-decoration: none;
+
+        border:
+            1px solid
+            rgba(255,215,0,0.7);
+
+        border-radius: 25px;
+
+        background:
+            rgba(6,19,45,0.8);
+
+        backdrop-filter: blur(10px);
+
+        font-size: 0.85rem;
+
+        transition:
+            0.3s ease;
+    }
+
+
+    .home-button:hover {
+
+        color: #06132d;
+
+        background: #ffd700;
+
+        transform:
+            translateX(-3px);
+    }
+
+
+    /* =====================================================
+       PAGE CONTAINER
+    ===================================================== */
+
+    .page-container {
+
+        width:
+            min(1200px, 92%);
+
+        margin:
+            auto;
+
+        padding:
+            90px
+            0
+            100px;
+    }
+
+
+    /* =====================================================
+       BLOG HEADER
+    ===================================================== */
+
+    .blog-header {
+
+        text-align: center;
+
+        margin-bottom: 45px;
+    }
+
+
+    .blog-header h1 {
+
+        color: #ffd700;
+
+        font-size:
+            clamp(
+                2.1rem,
+                5vw,
+                3.5rem
+            );
+
+        letter-spacing: 2px;
+
+        margin-bottom: 12px;
+    }
+
+
+    .blog-header p {
+
+        max-width: 720px;
+
+        margin: auto;
+
+        color:
+            rgba(255,255,255,0.75);
+
+        line-height: 1.8;
+
+        font-size: 0.98rem;
+    }
+
+
+    /* =====================================================
+       FEATURED ARTICLE
+    ===================================================== */
+
+    .featured {
+
+        position: relative;
+
+        overflow: hidden;
+
+        margin-bottom: 55px;
+
+        padding: 45px;
+
+        border:
+            1px solid
+            rgba(255,215,0,0.3);
+
+        border-radius: 24px;
+
+        background:
+
+            linear-gradient(
+                135deg,
+                rgba(255,215,0,0.12),
+                rgba(255,255,255,0.04)
+            );
+
+        box-shadow:
+            0 25px 70px
+            rgba(0,0,0,0.25);
+
+        backdrop-filter:
+            blur(8px);
+
+        transition:
+            0.4s ease;
+    }
+
+
+    .featured:hover {
+
+        transform:
+            translateY(-5px);
+
+        border-color:
+            rgba(255,215,0,0.65);
+
+        box-shadow:
+            0 30px 80px
+            rgba(0,0,0,0.35);
+    }
+
+
+    .featured::before {
+
+        content: "";
+
+        position: absolute;
+
+        width: 230px;
+        height: 230px;
+
+        right: -100px;
+        top: -100px;
+
+        border:
+            1px solid
+            rgba(255,215,0,0.2);
+
+        border-radius: 50%;
+
+        animation:
+            rotateDecoration
+            12s
+            linear
+            infinite;
+    }
+
+
+    .featured::after {
+
+        content: "";
+
+        position: absolute;
+
+        width: 120px;
+        height: 120px;
+
+        left: -60px;
+        bottom: -60px;
+
+        border:
+            1px solid
+            rgba(255,255,255,0.12);
+
+        transform: rotate(45deg);
+
+        animation:
+            floatDecoration
+            7s
+            ease-in-out
+            infinite;
+    }
+
+
+    .featured-content {
+
+        position: relative;
+
+        z-index: 2;
+
+        max-width: 850px;
+    }
+
+
+    .featured-label {
+
+        display: inline-block;
+
+        margin-bottom: 15px;
+
+        padding:
+            6px
+            14px;
+
+        border:
+            1px solid
+            rgba(255,215,0,0.55);
+
+        border-radius: 20px;
+
+        color: #ffd700;
+
+        font-size: 0.72rem;
+
+        text-transform:
+            uppercase;
+
+        letter-spacing:
+            1.5px;
+    }
+
+
+    .featured h2 {
+
+        font-size:
+            clamp(
+                1.65rem,
+                4vw,
+                2.5rem
+            );
+
+        line-height: 1.25;
+
+        margin-bottom: 15px;
+
+        color: white;
+    }
+
+
+    .featured p {
+
+        max-width: 760px;
+
+        color:
+            rgba(255,255,255,0.76);
+
+        line-height: 1.8;
+
+        margin-bottom: 20px;
+    }
+
+
+    .featured-meta {
+
+        display: flex;
+
+        gap: 18px;
+
+        flex-wrap: wrap;
+
+        color:
+            rgba(255,255,255,0.55);
+
+        font-size: 0.78rem;
+
+        margin-bottom: 24px;
+    }
+
+
+    .featured-button {
+
+        display: inline-block;
+
+        padding:
+            11px
+            23px;
+
+        border-radius: 25px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #ffd700,
+                #fff2a0
+            );
+
+        color: #06132d;
+
+        text-decoration: none;
+
+        font-weight: bold;
+
+        transition:
+            0.3s ease;
+    }
+
+
+    .featured-button:hover {
+
+        transform:
+            translateY(-3px);
+
+        box-shadow:
+            0 10px 25px
+            rgba(255,215,0,0.3);
+    }
+
+
+    @keyframes rotateDecoration {
+
+        from {
+            transform:
+                rotate(0deg);
+        }
+
+        to {
+            transform:
+                rotate(360deg);
+        }
+    }
+
+
+    @keyframes floatDecoration {
+
+        0%,100% {
+            transform:
+                translateY(0)
+                rotate(45deg);
+        }
+
+        50% {
+            transform:
+                translateY(-20px)
+                rotate(135deg);
+        }
+    }
+
+
+    /* =====================================================
+       FILTER + SEARCH SECTION
+    ===================================================== */
+
+    .tools-section {
+
+        margin-bottom: 35px;
+    }
+
+
+    .filter-title {
+
+        text-align: center;
+
+        color:
+            rgba(255,255,255,0.7);
+
+        font-size: 0.85rem;
+
+        margin-bottom: 14px;
+    }
+
+
+    .filters {
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        gap: 9px;
+
+        flex-wrap: wrap;
+
+        margin-bottom: 22px;
+    }
+
+
+    .filter-button {
+
+        padding:
+            8px
+            16px;
+
+        border:
+            1px solid
+            rgba(255,255,255,0.16);
+
+        border-radius: 25px;
+
+        background:
+            rgba(255,255,255,0.045);
+
+        color:
+            rgba(255,255,255,0.75);
+
+        cursor: pointer;
+
+        font-size: 0.78rem;
+
+        transition:
+            0.3s ease;
+    }
+
+
+    .filter-button:hover {
+
+        border-color:
+            rgba(255,215,0,0.55);
+
+        color: #ffd700;
+
+        transform:
+            translateY(-2px);
+    }
+
+
+    .filter-button.active {
+
+        color: #06132d;
+
+        background: #ffd700;
+
+        border-color: #ffd700;
+
+        font-weight: bold;
+    }
+
+
+    .filter-button:focus-visible,
+    .search-input:focus-visible,
+    .featured-button:focus-visible,
+    .read-button:focus-visible,
+    .home-button:focus-visible,
+    .mini-contact-btn:focus-visible {
+
+        outline:
+            2px solid
+            white;
+
+        outline-offset: 3px;
+    }
+
+
+    /* SEARCH */
+
+    .search-wrapper {
+
+        max-width: 650px;
+
+        margin:
+            auto;
+
+        position: relative;
+    }
+
+
+    .search-input {
+
+        width: 100%;
+
+        padding:
+            14px
+            18px;
+
+        border:
+            1px solid
+            rgba(255,215,0,0.3);
+
+        border-radius: 30px;
+
+        background:
+            rgba(255,255,255,0.055);
+
+        color: white;
+
+        outline: none;
+
+        font-size: 0.9rem;
+
+        backdrop-filter:
+            blur(8px);
+
+        transition:
+            0.3s ease;
+    }
+
+
+    .search-input::placeholder {
+
+        color:
+            rgba(255,255,255,0.45);
+    }
+
+
+    .search-input:focus {
+
+        border-color:
+            #ffd700;
+
+        box-shadow:
+            0 0 20px
+            rgba(255,215,0,0.1);
+    }
+
+
+    /* =====================================================
+       RESULT INFORMATION
+    ===================================================== */
+
+    .results-info {
+
+        text-align: center;
+
+        color:
+            rgba(255,255,255,0.55);
+
+        font-size: 0.78rem;
+
+        margin-bottom: 25px;
+    }
+
+
+    .results-info span {
+
+        color: #ffd700;
+
+        font-weight: bold;
+    }
+
+
+    /* =====================================================
+       ARTICLE GRID
+    ===================================================== */
+
+    .article-grid {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 22px;
+    }
+
+
+    /* =====================================================
+       ARTICLE CARD
+    ===================================================== */
+
+    .article-card {
+
+        display: flex;
+
+        flex-direction: column;
+
+        overflow: hidden;
+
+        min-width: 0;
+
+        background:
+            rgba(255,255,255,0.045);
+
+        border:
+            1px solid
+            rgba(255,255,255,0.12);
+
+        border-radius: 18px;
+
+        transition:
+            transform 0.35s ease,
+            border-color 0.35s ease,
+            box-shadow 0.35s ease;
+
+        animation:
+            cardAppear
+            0.65s
+            ease
+            both;
+    }
+
+
+    .article-card:hover {
+
+        transform:
+            translateY(-8px);
+
+        border-color:
+            rgba(255,215,0,0.55);
+
+        box-shadow:
+            0 20px 45px
+            rgba(0,0,0,0.3);
+    }
+
+
+    .article-card.hidden {
+
+        display: none;
+    }
+
+
+    /* =====================================================
+       ARTICLE VISUAL
+    ===================================================== */
+
+    .article-visual {
+
+        height: 175px;
+
+        position: relative;
+
+        overflow: hidden;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        background:
+            linear-gradient(
+                135deg,
+                #102d61,
+                #0a1a39
+            );
+    }
+
+
+    .article-visual::before {
+
+        content: "";
+
+        position: absolute;
+
+        width: 150px;
+        height: 150px;
+
+        border:
+            1px solid
+            rgba(255,255,255,0.2);
+
+        transform:
+            rotate(45deg);
+
+        animation:
+            visualFloat
+            8s
+            ease-in-out
+            infinite;
+    }
+
+
+    .article-visual::after {
+
+        content: "";
+
+        position: absolute;
+
+        width: 75px;
+        height: 75px;
+
+        border:
+            1px solid
+            rgba(255,215,0,0.45);
+
+        border-radius: 50%;
+
+        animation:
+            visualRotate
+            10s
+            linear
+            infinite;
+    }
+
+
+    .visual-two {
+
+        background:
+            linear-gradient(
+                135deg,
+                #172d58,
+                #281a42
+            );
+    }
+
+
+    .visual-three {
+
+        background:
+            linear-gradient(
+                135deg,
+                #173a46,
+                #0c2138
+            );
+    }
+
+
+    .visual-four {
+
+        background:
+            linear-gradient(
+                135deg,
+                #382d17,
+                #101e3d
+            );
+    }
+
+
+    .visual-five {
+
+        background:
+            linear-gradient(
+                135deg,
+                #302040,
+                #0b1c3a
+            );
+    }
+
+
+    .visual-six {
+
+        background:
+            linear-gradient(
+                135deg,
+                #163b34,
+                #091e3a
+            );
+    }
+
+
+    .visual-word {
+
+        position: relative;
+
+        z-index: 2;
+
+        color:
+            rgba(255,255,255,0.9);
+
+        font-size:
+            clamp(
+                1.1rem,
+                3vw,
+                1.5rem
+            );
+
+        font-weight: bold;
+
+        letter-spacing: 3px;
+
+        text-transform:
+            uppercase;
+    }
+
+
+    @keyframes visualFloat {
+
+        0%,100% {
+
+            transform:
+                translateY(0)
+                rotate(45deg);
+
+            opacity: 0.3;
+        }
+
+        50% {
+
+            transform:
+                translateY(-15px)
+                rotate(135deg);
+
+            opacity: 0.6;
+        }
+    }
+
+
+    @keyframes visualRotate {
+
+        from {
+            transform:
+                rotate(0deg);
+        }
+
+        to {
+            transform:
+                rotate(360deg);
+        }
+    }
+
+
+    /* =====================================================
+       ARTICLE BODY
+    ===================================================== */
+
+    .article-body {
+
+        padding: 24px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        flex: 1;
+    }
+
+
+    .article-category {
+
+        align-self:
+            flex-start;
+
+        display: inline-block;
+
+        margin-bottom: 12px;
+
+        padding:
+            5px
+            10px;
+
+        border:
+            1px solid
+            rgba(255,215,0,0.35);
+
+        border-radius: 20px;
+
+        color: #ffd700;
+
+        font-size: 0.68rem;
+
+        text-transform:
+            uppercase;
+
+        letter-spacing:
+            1px;
+    }
+
+
+    .article-title {
+
+        color: white;
+
+        font-size: 1.18rem;
+
+        line-height: 1.4;
+
+        margin-bottom: 12px;
+    }
+
+
+    .article-excerpt {
+
+        color:
+            rgba(255,255,255,0.68);
+
+        font-size: 0.86rem;
+
+        line-height: 1.7;
+
+        margin-bottom: 18px;
+    }
+
+
+    .article-meta {
+
+        display: flex;
+
+        justify-content:
+            space-between;
+
+        align-items: center;
+
+        gap: 10px;
+
+        flex-wrap: wrap;
+
+        margin-top: auto;
+
+        padding-top: 15px;
+
+        border-top:
+            1px solid
+            rgba(255,255,255,0.08);
+
+        color:
+            rgba(255,255,255,0.48);
+
+        font-size: 0.72rem;
+    }
+
+
+    .read-button {
+
+        display: inline-block;
+
+        margin-top: 18px;
+
+        padding:
+            9px
+            17px;
+
+        align-self:
+            flex-start;
+
+        border:
+            1px solid
+            rgba(255,215,0,0.45);
+
+        border-radius: 22px;
+
+        color: #ffd700;
+
+        background:
+            rgba(255,215,0,0.04);
+
+        text-decoration: none;
+
+        font-size: 0.78rem;
+
+        transition:
+            0.3s ease;
+    }
+
+
+    .read-button:hover {
+
+        color: #06132d;
+
+        background: #ffd700;
+
+        transform:
+            translateX(3px);
+    }
+
+
+    @keyframes cardAppear {
+
+        from {
+
+            opacity: 0;
+
+            transform:
+                translateY(25px);
+        }
+
+        to {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+    }
+
+
+    /* =====================================================
+       NO RESULTS
+    ===================================================== */
+
+    .no-results {
+
+        display: none;
+
+        text-align: center;
+
+        padding:
+            50px
+            20px;
+
+        margin-top: 20px;
+
+        border:
+            1px dashed
+            rgba(255,215,0,0.35);
+
+        border-radius: 18px;
+
+        background:
+            rgba(255,255,255,0.025);
+    }
+
+
+    .no-results.show {
+
+        display: block;
+    }
+
+
+    .no-results h2 {
+
+        color: #ffd700;
+
+        font-size: 1.3rem;
+
+        margin-bottom: 10px;
+    }
+
+
+    .no-results p {
+
+        color:
+            rgba(255,255,255,0.6);
+
+        line-height: 1.6;
+
+        margin-bottom: 18px;
+    }
+
+
+    .reset-button {
+
+        padding:
+            9px
+            18px;
+
+        border:
+            1px solid
+            #ffd700;
+
+        border-radius: 22px;
+
+        background:
+            transparent;
+
+        color: #ffd700;
+
+        cursor: pointer;
+
+        transition:
+            0.3s ease;
+    }
+
+
+    .reset-button:hover {
+
+        background: #ffd700;
+
+        color: #06132d;
+    }
+
+
+    /* =====================================================
+       SMALL CONTACT CARD
+    ===================================================== */
+
+    .mini-contact-card {
+
+        width:
+            min(92%, 650px);
+
+        margin:
+            65px
+            auto
+            35px;
+
+        padding:
+            28px;
+
+        position: relative;
+
+        overflow: hidden;
+
+        background:
+
+            linear-gradient(
+                135deg,
+                rgba(255,255,255,0.08),
+                rgba(255,255,255,0.035)
+            );
+
+        border:
+            1px solid
+            rgba(255,255,255,0.18);
+
+        border-radius: 20px;
+
+        box-shadow:
+            0 18px 45px
+            rgba(0,0,0,0.3);
+
+        backdrop-filter:
+            blur(8px);
+    }
+
+
+    .mini-contact-card::before {
+
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        left: 15%;
+
+        width: 70%;
+
+        height: 2px;
+
+         background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #ffd700,
+                    white,
+                    #ffd700,
+                    transparent
+                );
+
+            box-shadow:
+                0 0 12px
+                rgba(255,215,0,0.8);
+        }
+
+
+        .mini-contact-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            text-align: center;
+        }
+
+
+        .mini-contact-content h2 {
+
+            color: #ffd700;
+
+            margin-bottom: 8px;
+
+            font-size:
+                clamp(
+                    1.25rem,
+                    3vw,
+                    1.6rem
+                );
+        }
+
+
+        .mini-contact-content p {
+
+            color:
+                rgba(255,255,255,0.76);
+
+            line-height: 1.6;
+
+            font-size: 0.88rem;
+
+            margin-bottom: 18px;
+        }
+
+
+        .mini-contact-details {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .mini-contact-btn {
+
+            display: inline-block;
+
+            padding:
+                10px
+                22px;
+
+            border-radius: 25px;
+
+            color: #06132d;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffd700,
+                    #fff2a0
+                );
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            font-size: 0.82rem;
+
+            transition:
+                0.3s ease;
+        }
+
+
+        .mini-contact-btn:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(255,215,0,0.3);
+        }
+
+
+        .email-link {
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 0.8rem;
+
+            border-bottom:
+                1px solid
+                rgba(255,215,0,0.6);
+
+            padding-bottom: 3px;
+
+            transition:
+                0.3s ease;
+        }
+
+
+        .email-link:hover {
+
+            color: #ffd700;
+
+            border-color: #ffd700;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            text-align: center;
+
+            padding:
+                22px
+                15px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            background:
+                rgba(3,12,29,0.6);
+
+            color:
+                rgba(255,255,255,0.6);
+
+            font-size: 0.8rem;
+        }
+
+
+        footer span {
+
+            color: #ffd700;
+        }
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 950px) {
+
+            .article-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .featured {
+
+                padding: 35px;
+            }
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 650px) {
+
+            .page-container {
+
+                width: 92%;
+
+                padding-top: 80px;
+
+                padding-bottom: 75px;
+            }
+
+
+            .home-button {
+
+                top: 12px;
+                left: 12px;
+
+                padding:
+                    8px
+                    14px;
+
+                font-size: 0.78rem;
+            }
+
+
+            .blog-header h1 {
+
+                font-size: 2.05rem;
+            }
+
+
+            .blog-header p {
+
+                font-size: 0.87rem;
+            }
+
+
+            .featured {
+
+                padding: 27px 22px;
+
+                border-radius: 18px;
+            }
+
+
+            .featured h2 {
+
+                font-size: 1.55rem;
+            }
+
+
+            .featured p {
+
+                font-size: 0.86rem;
+            }
+
+
+            .article-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 18px;
+            }
+
+
+            .article-visual {
+
+                height: 155px;
+            }
+
+
+            .filters {
+
+                gap: 7px;
+            }
+
+
+            .filter-button {
+
+                padding:
+                    7px
+                    12px;
+
+                font-size: 0.7rem;
+            }
+
+
+            .mini-contact-card {
+
+                width: 94%;
+
+                padding:
+                    23px
+                    17px;
+            }
+
+
+            .mini-contact-details {
+
+                flex-direction: column;
+            }
+        }
+
+
+        /* =====================================================
+           VERY SMALL DEVICES
+        ===================================================== */
+
+        @media (max-width: 380px) {
+
+            .page-container {
+
+                width: 94%;
+            }
+
+
+            .blog-header h1 {
+
+                font-size: 1.75rem;
+            }
+
+
+            .featured {
+
+                padding:
+                    23px
+                    17px;
+            }
+
+
+            .featured h2 {
+
+                font-size: 1.35rem;
+            }
+
+
+            .article-body {
+
+                padding: 20px;
+            }
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+
+                animation-duration:
+                    0.01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                scroll-behavior:
+                    auto !important;
+
+                transition-duration:
+                    0.01ms !important;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         ANIMATED BACKGROUND
+    ====================================================== -->
+
+    <div class="background">
+
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         HOME BUTTON
+    ====================================================== -->
+
+    <a
+        href="index.html"
+        class="home-button"
+        aria-label="Return to Home"
+    >
+        ← Home
+    </a>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="page-container">
+
+
+        <!-- =================================================
+             BLOG HEADER
+        ================================================== -->
+
+        <header class="blog-header">
+
+            <h1>My Blog </h1>
+
+            <p>
+                Ideas, observations and perspectives on
+                technology, law, medicine, data, adventure
+                and personal growth.
+            </p>
+
+        </header>
+
+
+        <!-- =================================================
+             FEATURED ARTICLE
+        ================================================== -->
+
+        <section
+            class="featured"
+            aria-labelledby="featured-title"
+        >
+
+            <div class="featured-content">
+
+                <span class="featured-label">
+                    Featured Article
+                </span>
+
+
+                <h2 id="featured-title">
+                    The Role of Technology in Modern Society
+                </h2>
+
+
+                <p>
+                    Technology continues to influence how
+                    people communicate, work, learn,
+                    create and solve problems. Understanding
+                    this relationship can help us think more
+                    carefully about the opportunities and
+                    responsibilities that come with digital
+                    innovation.
+                </p>
+
+
+                <div class="featured-meta">
+
+                    <span>
+                        Technology
+                    </span>
+
+                    <span>
+                        September 2026
+                    </span>
+
+                    <span>
+                        5 min read
+                    </span>
+
+                </div>
+
+
+                <a
+                    href="#articles"
+                    class="featured-button"
+                >
+                    Explore Articles
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FILTER + SEARCH
+        ================================================== -->
+
+        <section
+            class="tools-section"
+            aria-label="Blog search and filters"
+        >
+
+            <p class="filter-title">
+                Explore articles by topic
+            </p>
+
+
+            <div
+                class="filters"
+                role="group"
+                aria-label="Article categories"
+            >
+
+                <button
+                    type="button"
+                    class="filter-button active"
+                    data-category="all"
+                >
+                    All
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-category="technology"
+                >
+                    Technology
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-category="law"
+                >
+                    Law
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-category="medicine"
+                >
+                    Medicine
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-category="data"
+                >
+                    Data & Innovation
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-category="adventure"
+                >
+                    Adventure
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-category="growth"
+                >
+                    Personal Growth
+                </button>
+
+            </div>
+
+
+            <div class="search-wrapper">
+
+                <label
+                    for="searchInput"
+                    style="
+                        position:absolute;
+                        width:1px;
+                        height:1px;
+                        padding:0;
+                        margin:-1px;
+                        overflow:hidden;
+                        clip:rect(0,0,0,0);
+                        white-space:nowrap;
+                        border:0;
+                    "
+                >
+                    Search articles
+                </label>
+
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    class="search-input"
+                    placeholder="Search articles..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RESULT COUNT
+        ================================================== -->
+
+        <div class="results-info">
+
+            Showing
+            <span id="resultCount">6</span>
+            articles
+
+        </div>
+
+
+        <!-- =================================================
+             ARTICLE GRID
+        ================================================== -->
+
+        <section
+            id="articles"
+            class="article-grid"
+            aria-label="Blog articles"
+        >
+
+
+            <!-- =============================================
+                 ARTICLE 1
+            ============================================== -->
+
+            <article
+                class="article-card"
+                data-category="technology"
+                data-search="
+                    technology modern society
+                    digital innovation technology
+                "
+            >
+
+                <div class="article-visual">
+
+                    <span class="visual-word">
+                        Technology
+                    </span>
+
+                </div>
+
+
+                <div class="article-body">
+
+                    <span class="article-category">
+                        Technology
+                    </span>
+
+
+                    <h2 class="article-title">
+                        The Role of Technology in Modern Society
+                    </h2>
+
+
+                    <p class="article-excerpt">
+                        Exploring how digital technology
+                        continues to influence communication,
+                        work, learning and everyday life.
+                    </p>
+
+
+                    <div class="article-meta">
+
+                        <span>
+                            September 2026
+                        </span>
+
+                        <span>
+                            5 min read
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="#"
+                        class="read-button"
+                        onclick="showArticleMessage(event, 'The Role of Technology in Modern Society')"
+                    >
+                        Read Article
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =============================================
+                 ARTICLE 2
+            ============================================== -->
+
+            <article
+                class="article-card"
+                data-category="technology"
+                data-search="
+                    digital solutions technology
+                    software development innovation
+                "
+            >
+
+                <div class="article-visual visual-two">
+
+                    <span class="visual-word">
+                        Digital
+                    </span>
+
+                </div>
+
+
+                <div class="article-body">
+
+                    <span class="article-category">
+                        Technology
+                    </span>
+
+
+                    <h2 class="article-title">
+                        Building Useful Digital Solutions
+                    </h2>
+
+
+                    <p class="article-excerpt">
+                        A look at the principles behind
+                        creating digital solutions that
+                        address practical problems.
+                    </p>
+
+
+                    <div class="article-meta">
+
+                        <span>
+                            September 2026
+                        </span>
+
+                        <span>
+                            4 min read
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="#"
+                        class="read-button"
+                        onclick="showArticleMessage(event, 'Building Useful Digital Solutions')"
+                    >
+                        Read Article
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =============================================
+                 ARTICLE 3
+            ============================================== -->
+
+            <article
+                class="article-card"
+                data-category="law"
+                data-search="
+                    law legal rights society justice
+                    technology digital law
+                "
+            >
+
+                <div class="article-visual visual-three">
+
+                    <span class="visual-word">
+                        Law
+                    </span>
+
+                </div>
+
+
+                <div class="article-body">
+
+                    <span class="article-category">
+                        Law
+                    </span>
+
+
+                    <h2 class="article-title">
+                        Why Understanding the Law Matters
+                    </h2>
+
+
+                    <p class="article-excerpt">
+                        An introduction to why legal awareness
+                        can help people understand rights,
+                        responsibilities and society.
+                    </p>
+
+
+                    <div class="article-meta">
+
+                        <span>
+                            September 2026
+                        </span>
+
+                        <span>
+                            5 min read
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="#"
+                        class="read-button"
+                        onclick="showArticleMessage(event, 'Why Understanding the Law Matters')"
+                    >
+                        Read Article
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =============================================
+                 ARTICLE 4
+            ============================================== -->
+
+            <article
+                class="article-card"
+                data-category="medicine"
+                data-search="
+                    medicine medical technology health
+                    science digital healthcare
+                "
+            >
+
+                <div class="article-visual visual-four">
+
+                    <span class="visual-word">
+                        Medicine
+                    </span>
+
+                </div>
+
+
+                <div class="article-body">
+
+                    <span class="article-category">
+                        Medicine
+                    </span>
+
+
+                    <h2 class="article-title">
+                        The Growing Relationship Between Medicine and Technology
+                    </h2>
+
+
+                    <p class="article-excerpt">
+                        Exploring the connection between
+                        medical science, technology, data
+                        and modern healthcare.
+                    </p>
+
+
+                    <div class="article-meta">
+
+                        <span>
+                            September 2026
+                        </span>
+
+                        <span>
+                            5 min read
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="#"
+                        class="read-button"
+                        onclick="showArticleMessage(event, 'The Growing Relationship Between Medicine and Technology')"
+                    >
+                        Read Article
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =============================================
+ARTICLE 5
+            ============================================== -->
+
+            <article
+                class="article-card"
+                data-category="data"
+                data-search="
+                    data analysis decision making
+                    information analytics innovation
+                "
+            >
+
+                <div class="article-visual visual-five">
+
+                    <span class="visual-word">
+                        Data
+                    </span>
+
+                </div>
+
+
+                <div class="article-body">
+
+                    <span class="article-category">
+                        Data & Innovation
+                    </span>
+
+
+                    <h2 class="article-title">
+                        Why Data Matters in Decision Making
+                    </h2>
+
+
+                    <p class="article-excerpt">
+                        Understanding how data can transform
+                        raw information into useful insights
+                        for better decisions.
+                    </p>
+
+
+                    <div class="article-meta">
+
+                        <span>
+                            September 2026
+                        </span>
+
+                        <span>
+                            4 min read
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="#"
+                        class="read-button"
+                        onclick="showArticleMessage(event, 'Why Data Matters in Decision Making')"
+                    >
+                        Read Article
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =============================================
+                 ARTICLE 6
+            ============================================== -->
+
+            <article
+                class="article-card"
+                data-category="adventure"
+                data-search="
+                    adventure exploration travel learning
+                    personal growth experience
+                "
+            >
+
+                <div class="article-visual visual-six">
+
+                    <span class="visual-word">
+                        Adventure
+                    </span>
+
+                </div>
+
+
+                <div class="article-body">
+
+                    <span class="article-category">
+                        Adventure
+                    </span>
+
+
+                    <h2 class="article-title">
+                        What Adventure Can Teach Us
+                    </h2>
+
+
+                    <p class="article-excerpt">
+                        Exploring how new environments,
+                        experiences and challenges can
+                        encourage curiosity and personal growth.
+                    </p>
+
+
+                    <div class="article-meta">
+
+                        <span>
+                            September 2026
+                        </span>
+
+                        <span>
+                            4 min read
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="#"
+                        class="read-button"
+                        onclick="showArticleMessage(event, 'What Adventure Can Teach Us')"
+                    >
+                        Read Article
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <!-- =================================================
+             NO RESULTS
+        ================================================== -->
+
+        <section
+            id="noResults"
+            class="no-results"
+            aria-live="polite"
+        >
+
+            <h2>
+                No Articles Found
+            </h2>
+
+
+            <p>
+                No article matches your selected category
+                or search phrase. Try another topic or
+                clear the search.
+            </p>
+
+
+            <button
+                type="button"
+                class="reset-button"
+                id="resetButton"
+            >
+                Show All Articles
+            </button>
+
+        </section>
+
+
+        <!-- =================================================
+             CONTACT CARD
+        ================================================== -->
+
+        <section class="mini-contact-card">
+
+            <div class="mini-contact-content">
+
+                <h2>
+                    Have an Idea to Discuss?
+                </h2>
+
+
+                <p>
+                    Whether you have a project, question,
+                    collaboration idea or simply want to
+                    start a conversation, feel free to reach out.
+                </p>
+
+
+                <div class="mini-contact-details">
+
+                    <a
+                        href="contact.html"
+                        class="mini-contact-btn"
+                    >
+                        Contact Me
+                    </a>
+
+
+                    <!--
+                        Replace with your real email.
+                    -->
+
+                    <a
+                        href="mailto:horintechie@gmail.com"
+                        class="email-link"
+                    >
+                        horintechie@gmail.com
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        ©
+        <span id="currentYear"></span>
+        Horizon Technologies. All Rights Reserved.
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        /* =================================================
+           ELEMENTS
+        ================================================== */
+
+        const filterButtons =
+            document.querySelectorAll(
+                ".filter-button"
+            );
+
+
+        const articleCards =
+            document.querySelectorAll(
+                ".article-card"
+            );
+
+
+        const searchInput =
+            document.getElementById(
+                "searchInput"
+            );
+
+
+        const resultCount =
+            document.getElementById(
+                "resultCount"
+            );
+
+
+        const noResults =
+            document.getElementById(
+                "noResults"
+            );
+
+
+        const resetButton =
+            document.getElementById(
+                "resetButton"
+            );
+
+
+        let currentCategory = "all";
+
+
+        /* =================================================
+           FILTER ARTICLES
+        ================================================== */
+
+        function filterArticles() {
+
+            const searchTerm =
+                searchInput.value
+                    .toLowerCase()
+                    .trim();
+
+
+            let visibleCount = 0;
+
+
+            articleCards.forEach(
+                function(card) {
+
+                    const category =
+                        card.dataset.category;
+
+
+                    const searchableText =
+                        (
+                            card.dataset.search +
+                            " " +
+                            card.innerText
+                        )
+                        .toLowerCase();
+
+
+                    const categoryMatches =
+                        currentCategory === "all" ||
+                        category === currentCategory;
+
+
+                    const searchMatches =
+                        searchTerm === "" ||
+                        searchableText.includes(
+                            searchTerm
+                        );
+
+
+                    if (
+                        categoryMatches &&
+                        searchMatches
+                    ) {
+
+                        card.classList.remove(
+                            "hidden"
+                        );
+
+                        visibleCount++;
+
+                    }
+
+                    else {
+
+                        card.classList.add(
+                            "hidden"
+                        );
+
+                    }
+
+                }
+            );
+
+
+            resultCount.textContent =
+                visibleCount;
+
+
+            if (visibleCount === 0) {
+
+                noResults.classList.add(
+                    "show"
+                );
+
+            }
+
+            else {
+
+                noResults.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+
+
+        /* =================================================
+           CATEGORY BUTTONS
+        ================================================== */
+
+        filterButtons.forEach(
+            function(button) {
+
+                button.addEventListener(
+                    "click",
+                    function() {
+
+                        filterButtons.forEach(
+                            function(btn) {
+
+                                btn.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        this.classList.add(
+                            "active"
+                        );
+
+
+                        currentCategory =
+                            this.dataset.category;
+
+
+                        filterArticles();
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =================================================
+           SEARCH
+        ================================================== */
+
+        searchInput.addEventListener(
+            "input",
+            function() {
+
+                filterArticles();
+
+            }
+        );
+
+
+        /* =================================================
+           RESET
+        ================================================== */
+
+        resetButton.addEventListener(
+            "click",
+            function() {
+
+                currentCategory = "all";
+
+                searchInput.value = "";
+
+
+                filterButtons.forEach(
+                    function(button) {
+
+                        button.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                document
+                    .querySelector(
+                        '.filter-button[data-category="all"]'
+                    )
+                    .classList.add(
+                        "active"
+                    );
+
+
+                filterArticles();
+
+            }
+        );
+
+
+        /* =================================================
+           READ ARTICLE PLACEHOLDER
+        ================================================== */
+
+        function showArticleMessage(
+            event,
+            title
+        ) {
+
+            event.preventDefault();
+
+
+            alert(
+                '"' +
+                title +
+                '" is ready for its dedicated article page.'
+            );
+
+        }
+
+
+        /* =================================================
+           AUTOMATIC YEAR
+        ================================================== */
+
+        document.getElementById(
+            "currentYear"
+        ).textContent =
+            new Date().getFullYear();
+
+
+        /* =================================================
+           INITIAL FILTER
+        ================================================== */
+
+        filterArticles();
+
+
+    </script>
+
+
+</body>
+
+</html>
+              
