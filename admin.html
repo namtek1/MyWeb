@@ -1400,7 +1400,7 @@ body {
                 </h3>
 
                 <a
-                    href="https://drive.google.com/file/d/1WBKAzOD5jrajNe3JB24anLPjzOtLAvxA/view?usp=drivesdk"
+                    href="https://drive.google.com/file/d/1vr5Atr1BSzVqj47NNGCK8qZDWOb8VcP-/view?usp=drivesdk"
                     target="_blank"
                     class="document-link"
                 >
@@ -1408,7 +1408,7 @@ body {
                 </a>
 
         </div>
-           <br><br><br>
+           <br><br>
 
        <div
                 class="document-card"
@@ -1429,7 +1429,7 @@ body {
 
     </div>
        
-<br><br><br>
+<br><br>
            <div
                 class="document-card"
                 data-name="Contacts"
@@ -1460,56 +1460,7 @@ body {
             No matching document found.
         </div>
 
-    </section>
-
-
-
-    <!-- =================================================
-         ADD MORE LINKS
-    ================================================== -->
-
-    <section class="add-section">
-
-        <h2>
-            Add More Documents
-        </h2>
-
-        <p>
-            Add another document link to your document collection.
-        </p>
-
-
-        <form
-            class="add-form"
-            id="addForm"
-        >
-
-            <input
-                type="text"
-                id="newName"
-                placeholder="Document name"
-                required
-            >
-
-
-            <input
-                type="url"
-                id="newUrl"
-                placeholder="Document URL"
-                required
-            >
-
-
-            <button
-                type="submit"
-                class="add-button"
-            >
-                Add Link
-            </button>
-
-        </form>
-
-    </section>
+    </section> 
 
 
 </section>
@@ -1529,7 +1480,7 @@ body {
    by a server/backend rather than JavaScript.
 */
 
-const ADMIN_USERNAME = "Amos";
+const ADMIN_USERNAME = "amos";
 
 const ADMIN_PASSWORD = "2002";
 
@@ -1693,127 +1644,6 @@ searchInput.addEventListener(
                 "none";
 
         }
-
-    }
-);
-
-
-
-/* =========================================================
-   ADD NEW DOCUMENT
-========================================================= */
-
-addForm.addEventListener(
-    "submit",
-    function(event) {
-
-        event.preventDefault();
-
-
-        const name =
-            document.getElementById("newName")
-            .value
-            .trim();
-
-
-        const url =
-            document.getElementById("newUrl")
-            .value
-            .trim();
-
-
-        if (!name || !url) {
-
-            return;
-
-        }
-
-
-        /* Create card */
-
-        const card =
-            document.createElement("div");
-
-        card.className =
-            "document-card";
-
-        card.dataset.name =
-            name;
-
-
-        /* Document title */
-
-        const title =
-            document.createElement("h3");
-
-        title.textContent =
-            name;
-
-
-        /* Open link */
-
-        const link =
-            document.createElement("a");
-
-        link.href =
-            url;
-
-        link.target =
-            "_blank";
-
-        link.rel =
-            "noopener noreferrer";
-
-        link.className =
-            "document-link";
-
-        link.textContent =
-            "Open";
-
-
-        /* Delete button */
-
-        const deleteButton =
-            document.createElement("button");
-
-        deleteButton.className =
-            "delete-link";
-
-        deleteButton.textContent =
-            "Delete";
-
-
-        deleteButton.addEventListener(
-            "click",
-            function() {
-
-                card.remove();
-
-                searchInput.dispatchEvent(
-                    new Event("input")
-                );
-
-            }
-        );
-
-
-        /* Build card */
-
-        card.appendChild(title);
-
-        card.appendChild(link);
-
-        card.appendChild(deleteButton);
-
-
-        /* Add to grid */
-
-        documentGrid.appendChild(card);
-
-
-        /* Clear form */
-
-        addForm.reset();
 
     }
 );
