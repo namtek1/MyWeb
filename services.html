@@ -1,0 +1,2415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>amosservices</title>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: #ffffff;
+
+    background: #020b1d;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   ANIMATED BACKGROUND
+========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: -50%;
+
+    z-index: -3;
+
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(255, 215, 100, 0.08),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(255, 255, 255, 0.06),
+            transparent 25%
+        );
+
+    animation:
+        backgroundMove 18s linear infinite;
+}
+
+@keyframes backgroundMove {
+
+    0% {
+        transform:
+            rotate(0deg)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            rotate(4deg)
+            scale(1.08);
+    }
+
+    100% {
+        transform:
+            rotate(0deg)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   MOVING WHITE BUBBLES
+========================================================= */
+
+.bubble-container {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: -2;
+}
+
+
+.bubble {
+
+    position: absolute;
+
+    bottom: -100px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.15);
+
+    background:
+        rgba(255,255,255,0.025);
+
+    border-radius: 50%;
+
+    animation:
+        bubbleMove linear infinite,
+        bubblePulse ease-in-out infinite alternate;
+}
+
+
+.bubble:nth-child(1) {
+    width: 45px;
+    height: 45px;
+    left: 8%;
+
+    animation-duration:
+        15s,
+        3s;
+}
+
+
+.bubble:nth-child(2) {
+    width: 75px;
+    height: 75px;
+    left: 22%;
+
+    animation-duration:
+        19s,
+        4s;
+
+    animation-delay: 2s;
+}
+
+
+.bubble:nth-child(3) {
+    width: 30px;
+    height: 30px;
+    left: 38%;
+
+    animation-duration:
+        13s,
+        2.5s;
+
+    animation-delay: 5s;
+}
+
+
+.bubble:nth-child(4) {
+    width: 90px;
+    height: 90px;
+    left: 55%;
+
+    animation-duration:
+        21s,
+        4s;
+
+    animation-delay: 1s;
+}
+
+
+.bubble:nth-child(5) {
+    width: 50px;
+    height: 50px;
+    left: 70%;
+
+    animation-duration:
+        16s,
+        3s;
+
+    animation-delay: 4s;
+}
+
+
+.bubble:nth-child(6) {
+    width: 35px;
+    height: 35px;
+    left: 86%;
+
+    animation-duration:
+        14s,
+        2s;
+
+    animation-delay: 7s;
+}
+
+
+@keyframes bubbleMove {
+
+    from {
+        transform:
+            translateY(0)
+            translateX(0);
+    }
+
+    to {
+        transform:
+            translateY(-120vh)
+            translateX(100px);
+    }
+}
+
+
+@keyframes bubblePulse {
+
+    from {
+        opacity: 0.25;
+    }
+
+    to {
+        opacity: 0.7;
+    }
+}
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+.page {
+
+    width: min(1200px, 94%);
+
+    margin: auto;
+
+    padding:
+        25px
+        0
+        110px;
+}
+
+
+/* =========================================================
+   HOME LINK
+========================================================= */
+
+.home-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    text-decoration: none;
+
+    color: #ffffff;
+
+    padding:
+        11px
+        20px;
+
+    border:
+        1px solid
+        rgba(255,215,100,0.45);
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.home-link:hover {
+
+    transform:
+        translateX(5px);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.12),
+            rgba(255,190,70,0.14)
+        );
+
+    border-color:
+        #ffd76a;
+
+    box-shadow:
+        0 0 20px
+        rgba(255,215,100,0.16);
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header {
+
+    text-align: center;
+
+    max-width: 800px;
+
+    margin:
+        65px auto
+        50px;
+}
+
+
+.page-header h1 {
+
+    font-size:
+        clamp(
+            2.3rem,
+            6vw,
+            4.6rem
+        );
+
+    line-height: 1.05;
+
+    color: #ffffff;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 18px;
+}
+
+
+.page-header h1 span {
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ffd76a,
+            #ffae42,
+            #ffffff
+        );
+
+    background-size:
+        250% auto;
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+
+    animation:
+        goldFlow 6s linear infinite;
+}
+
+
+@keyframes goldFlow {
+
+    from {
+        background-position:
+            0% center;
+    }
+
+    to {
+        background-position:
+            250% center;
+    }
+}
+
+
+.page-header p {
+
+    color:
+        rgba(255,255,255,0.72);
+
+    line-height: 1.8;
+
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   HEADER LINE
+========================================================= */
+
+.header-line {
+
+    width: 90px;
+
+    height: 3px;
+
+    margin:
+        25px auto
+        0;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ffd76a,
+            #ffae42
+        );
+
+    animation:
+        linePulse
+        2.5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes linePulse {
+
+    0%,
+    100% {
+        width: 70px;
+        opacity: 0.6;
+    }
+
+    50% {
+        width: 130px;
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   SERVICES GRID
+========================================================= */
+
+.services-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 22px;
+}
+
+
+/* =========================================================
+   SERVICE CARD
+========================================================= */
+
+.service-card {
+
+    position: relative;
+
+    padding:
+        30px
+        25px;
+
+    min-height: 285px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    border-radius: 22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.055),
+            rgba(255,255,255,0.015)
+        );
+
+    backdrop-filter:
+        blur(10px);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.service-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+
+    height: 150px;
+
+    top: -80px;
+
+    right: -70px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,215,100,0.15),
+            transparent 70%
+        );
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+.service-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 0;
+
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ffd76a,
+            #ffae42
+        );
+
+    transition:
+        width 0.4s ease;
+}
+
+
+.service-card:hover {
+
+    transform:
+        translateY(-9px);
+
+    border-color:
+        rgba(255,215,100,0.45);
+
+    box-shadow:
+        0 18px 45px
+        rgba(0,0,0,0.35),
+
+        0 0 25px
+        rgba(255,215,100,0.08);
+}
+
+
+.service-card:hover::before {
+
+    transform:
+        scale(1.6);
+}
+
+
+.service-card:hover::after {
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   SERVICE NUMBER
+========================================================= */
+
+.service-number {
+
+    font-size:
+        0.75rem;
+
+    color:
+        #ffd76a;
+
+    letter-spacing:
+        2px;
+
+    margin-bottom:
+        18px;
+
+    font-weight:
+        700;
+    
+    text-align: center;
+}
+
+
+/* =========================================================
+   SERVICE TITLE
+========================================================= */
+
+.service-card h2 {
+
+    color:
+        #ffffff;
+
+    font-size:
+        1.35rem;
+
+    margin-bottom:
+        14px;
+
+    line-height:
+        1.3;
+    
+    text-align: center;
+}
+
+
+.service-card h2 span {
+
+    color:
+        #ffd76a;
+    
+    text-align: center;
+}
+
+
+/* =========================================================
+   SERVICE DESCRIPTION
+========================================================= */
+
+.service-card p {
+
+    color:
+        rgba(255,255,255,0.68);
+
+    font-size:
+        0.92rem;
+
+    line-height:
+        1.75;
+
+    flex-grow:
+        1;
+     
+    text-align: center;
+}
+
+
+/* =========================================================
+   BOOK SERVICE BUTTON
+========================================================= */
+
+.service-button {
+
+    align-self:
+        flex;
+
+    margin-top:
+        25px;
+
+    padding:
+        10px
+        20px;
+
+    border:
+        1px solid
+        rgba(255,215,100,0.45);
+
+    border-radius:
+        25px;
+
+    color:
+        #ffffff;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.04),
+            rgba(255,190,70,0.08)
+        );
+
+    cursor:
+        pointer;
+
+    font-family:
+        inherit;
+
+    font-size:
+        0.82rem;
+
+    font-weight:
+        700;
+     
+    text-align: center;
+    
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.service-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ffd76a
+        );
+
+    color:
+        #07142b;
+
+    box-shadow:
+        0 7px 22px
+        rgba(255,215,100,0.18);
+}
+
+
+/* =========================================================
+   BOTTOM CTA
+========================================================= */
+
+.cta {
+
+    margin:
+        60px auto
+        0;
+
+    max-width:
+        850px;
+
+    padding:
+        35px;
+
+    text-align:
+        center;
+
+    border-radius:
+        24px;
+
+    border:
+        1px solid
+        rgba(255,215,100,0.2);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.05),
+            rgba(255,190,70,0.06)
+        );
+}
+
+
+.cta h2 {
+
+    font-size:
+        clamp(
+            1.5rem,
+            3vw,
+            2.1rem
+        );
+
+    margin-bottom:
+        12px;
+}
+
+
+.cta p {
+
+    color:
+        rgba(255,255,255,0.7);
+
+    line-height:
+        1.7;
+
+    max-width:
+        650px;
+
+    margin:
+        auto;
+}
+
+
+.cta-button {
+
+    display:
+        inline-block;
+
+    margin-top:
+        24px;
+
+    padding:
+        12px
+        25px;
+
+    border-radius:
+        30px;
+
+    text-decoration:
+        none;
+
+    color:
+        #07142b;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ffd76a,
+            #ffae42
+        );
+
+    font-weight:
+        700;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.cta-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(255,190,70,0.25);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    position:
+        fixed;
+
+    left:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        100%;
+
+    text-align:
+        center;
+
+    padding:
+        12px
+        15px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(2,11,29,0),
+            rgba(2,11,29,0.95)
+        );
+
+    color:
+        rgba(255,255,255,0.6);
+
+    font-size:
+        0.78rem;
+
+    z-index:
+        20;
+}
+
+
+.footer-name {
+
+    color:
+        #ffd76a;
+}
+
+
+/* =========================================================
+   BOOKING MODAL
+========================================================= */
+
+.modal {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        20px;
+
+    background:
+        rgba(0,0,0,0.72);
+
+    backdrop-filter:
+        blur(8px);
+
+    z-index:
+        100;
+}
+
+
+.modal.active {
+
+    display:
+        flex;
+}
+
+
+.modal-box {
+
+    width:
+        min(
+            520px,
+            100%
+        );
+
+    max-height:
+        90vh;
+
+    overflow-y:
+        auto;
+
+    padding:
+        30px;
+
+    border-radius:
+        24px;
+
+    border:
+        1px solid
+        rgba(255,215,100,0.35);
+
+    background:
+        linear-gradient(
+            145deg,
+            #07142b,
+            #020b1d
+        );
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,0.55);
+
+    animation:
+        modalOpen
+        0.35s
+        ease;
+}
+
+
+@keyframes modalOpen {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(25px)
+            scale(0.96);
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   MODAL HEADER
+========================================================= */
+
+.modal-header {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    margin-bottom:
+        15px;
+}
+
+
+.modal-header h2 {
+
+    color:
+        #ffffff;
+
+    font-size:
+        1.5rem;
+}
+
+
+.close-modal {
+
+    border:
+        none;
+
+    background:
+        transparent;
+
+    color:
+        #ffd76a;
+
+    font-size:
+        1.7rem;
+
+    cursor:
+        pointer;
+
+    line-height:
+        1;
+}
+
+
+.modal-box > p {
+
+    color:
+        rgba(255,255,255,0.7);
+
+    line-height:
+        1.7;
+
+    margin-bottom:
+        23px;
+
+    font-size:
+        0.9rem;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-group {
+
+    margin-bottom:
+        18px;
+}
+
+
+.form-group label {
+
+    display:
+        block;
+
+    margin-bottom:
+        7px;
+
+    color:
+        #ffd76a;
+
+    font-size:
+        0.85rem;
+
+    font-weight:
+        600;
+}
+
+
+.form-group input {
+
+    width:
+        100%;
+
+    padding:
+        13px
+        15px;
+
+    border-radius:
+        12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.15);
+
+    outline:
+        none;
+
+    background:
+        rgba(255,255,255,0.055);
+
+    color:
+        #ffffff;
+
+    font-family:
+        inherit;
+
+    font-size:
+        0.9rem;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.form-group input::placeholder {
+
+    color:
+        rgba(255,255,255,0.4);
+}
+
+
+.form-group input:focus {
+
+    border-color:
+        #ffd76a;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 0 15px
+        rgba(255,215,100,0.1);
+}
+
+
+.form-group input[readonly] {
+
+    color:
+        #ffd76a;
+
+    cursor:
+        not-allowed;
+
+    background:
+        rgba(255,215,100,0.06);
+}
+
+
+/* =========================================================
+   BOOKING OPTIONS
+========================================================= */
+
+.booking-options {
+
+    margin-top:
+        25px;
+}
+
+
+.option-title {
+
+    color:
+        rgba(255,255,255,0.7);
+
+    font-size:
+        0.85rem;
+
+    margin-bottom:
+        12px;
+}
+
+
+.modal-actions {
+
+    display:
+        flex;
+
+    gap:
+        12px;
+
+    flex-wrap:
+        wrap;
+}
+
+
+.modal-action {
+
+    flex:
+        1;
+
+    min-width:
+        140px;
+
+    padding:
+        13px
+        18px;
+
+    border-radius:
+        12px;
+
+    border:
+        1px solid
+        rgba(255,215,100,0.35);
+
+    color:
+        #ffffff;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.04),
+            rgba(255,190,70,0.08)
+        );
+
+    cursor:
+        pointer;
+
+    font-family:
+        inherit;
+
+    font-weight:
+        700;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.modal-action:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ffd76a
+        );
+
+    color:
+        #07142b;
+
+    box-shadow:
+        0 8px 25px
+        rgba(255,215,100,0.2);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .services-grid {
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+    .page-header {
+
+        margin-top:
+            50px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .page {
+
+        width:
+            92%;
+
+        padding-top:
+            20px;
+
+        padding-bottom:
+            100px;
+    }
+
+
+    .page-header {
+
+        margin:
+            45px auto
+            35px;
+    }
+
+
+    .page-header h1 {
+
+        font-size:
+            2.5rem;
+    }
+
+
+    .services-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            18px;
+    }
+
+
+    .service-card {
+
+        min-height:
+            auto;
+
+        padding:
+            27px
+            22px;
+    }
+
+
+    .cta {
+
+        padding:
+            28px
+            20px;
+    }
+
+
+    .modal-box {
+
+        padding:
+            24px
+            20px;
+    }
+
+
+    .modal-action {
+
+        min-width:
+            100%;
+    }
+
+
+    footer {
+
+        font-size:
+            0.7rem;
+    }
+}
+
+
+@media (max-width: 380px) {
+
+    .page-header h1 {
+
+        font-size:
+            2.15rem;
+    }
+
+
+    .home-link {
+
+        font-size:
+            0.78rem;
+
+        padding:
+            9px
+            15px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ======================================================
+     ANIMATED BACKGROUND
+====================================================== -->
+
+<div class="bubble-container">
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+</div>
+
+
+
+<!-- ======================================================
+     MAIN PAGE
+====================================================== -->
+
+<main class="page">
+
+
+    <!-- HOME LINK -->
+
+    <a
+        href="index.html"
+        class="home-link">
+
+        Home
+
+    </a>
+
+
+
+    <!-- ==================================================
+         HEADER
+    ================================================== -->
+
+    <header class="page-header">
+
+        <h1>
+
+            My
+            <span>Services</span>
+
+        </h1>
+
+
+        <p>
+
+            I provide practical technology solutions designed
+            to turn ideas, problems and opportunities into
+            useful digital experiences.
+
+        </p>
+
+
+        <div class="header-line"></div>
+
+    </header>
+
+
+
+    <!-- ==================================================
+         SERVICES
+    ================================================== -->
+
+    <section class="services-grid">
+
+
+        <!-- SERVICE 1 -->
+
+        <article class="service-card">
+
+            <h2>
+                Web <span>Development</span>
+            </h2>
+
+
+            <p>
+
+                Development of responsive, modern and functional
+                websites for individuals, businesses, organizations and personal brands.
+
+            </p>
+
+
+            <button
+                class="service-button"
+                onclick="openService('Web Development')">
+
+                Book Service
+
+            </button>
+
+        </article>
+
+
+
+        <!-- SERVICE 2 -->
+
+        <article class="service-card">
+
+
+            <h2>
+                Software <span>Development</span>
+            </h2>
+
+
+            <p>
+
+                Development of customized software systems
+                that help simplify processes, manage information
+                and solve specific organizational needs.
+
+            </p>
+
+
+            <button
+                class="service-button"
+                onclick="openService('Software Development')">
+
+                Book Service
+
+            </button>
+
+        </article>
+
+
+
+        <!-- SERVICE 3 -->
+
+        <article class="service-card">
+
+
+            <h2>
+                Data <span>Analysis</span>
+            </h2>
+
+
+            <p>
+
+                Data preparation, analysis and visualization
+                to transform raw information into understandable
+                and useful insights.
+
+            </p>
+
+
+            <button
+                class="service-button"
+                onclick="openService('Data Analysis')">
+
+                Book Service
+
+            </button>
+
+        </article>
+
+
+
+        <!-- SERVICE 4 -->
+
+        <article class="service-card">
+
+
+            <h2>
+                Graphic <span>Design</span>
+            </h2>
+
+
+            <p>
+
+                Creation of clean and professional visual
+                materials for personal brands, businesses,
+                projects and digital platforms.
+
+            </p>
+
+
+            <button
+                class="service-button"
+                onclick="openService('Graphic Design')">
+
+                Book Service
+
+            </button>
+
+        </article>
+
+
+
+        <!-- SERVICE 5 -->
+
+        <article class="service-card">
+            <h2>
+                Computer <span>Training</span>
+            </h2>
+
+
+            <p>
+
+                Practical training in computer applications,
+                programming, data analysis and other useful
+                digital skills.
+
+            </p>
+
+
+            <button
+                class="service-button"
+                onclick="openService('Computer Training')">
+
+                Book Service
+
+            </button>
+
+        </article>
+
+
+
+        <!-- SERVICE 6 -->
+
+        <article class="service-card">
+
+            <h2>
+                Computer <span>Networking</span>
+            </h2>
+
+
+            <p>
+
+                Assistance with computer networking concepts,
+                network configuration, troubleshooting and
+                practical networking projects.
+
+            </p>
+
+
+            <button
+                class="service-button"
+                onclick="openService('Computer Networking')">
+
+                Book Service
+
+            </button>
+
+        </article>
+
+
+
+        <!-- SERVICE 7 -->
+
+        <article class="service-card">
+
+            <h2>
+                Branding &
+                <span>Digital Identity</span>
+            </h2>
+
+
+            <p>
+
+                Development of a consistent digital identity
+                that helps individuals and organizations present
+                their work professionally online.
+
+            </p>
+
+
+            <button
+                class="service-button"
+                onclick="openService('Branding and Digital Identity')">
+
+                Book Service
+
+            </button>
+
+        </article>
+
+
+
+        <!-- SERVICE 8 -->
+
+        <article class="service-card">
+
+            <h2>
+                Technical
+                <span>Consultation</span>
+            </h2>
+
+
+            <p>
+
+                Practical guidance on technology projects,
+                software ideas, websites, data systems and
+                digital solutions.
+
+            </p>
+
+
+            <button
+                class="service-button"
+                onclick="openService('Technical Consultation')">
+
+                Book Service
+
+            </button>
+
+        </article>
+
+
+
+        <!-- SERVICE 9 -->
+
+        <article class="service-card">
+
+
+            <h2>
+                Project
+                <span>Development</span>
+            </h2>
+
+
+            <p>
+
+                Support with academic, personal and
+                organizational technology projects from
+                planning and development through implementation.
+
+            </p>
+
+
+            <button
+                class="service-button"
+                onclick="openService('Project Development')">
+
+                Book Service
+
+            </button>
+
+        </article>
+
+
+    </section>
+
+
+
+    <!-- ==================================================
+         CONTACT CTA
+    ================================================== -->
+
+    <section class="cta">
+
+        <h2>
+            Have a project in mind?
+        </h2>
+
+
+        <p>
+
+            Tell me what you would like to build, improve
+            or solve, and we can discuss a suitable approach.
+
+        </p>
+
+
+        <a
+            href="contact.html"
+            class="cta-button">
+
+            Contact Me
+
+        </a>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ======================================================
+     BOOK SERVICE MODAL
+====================================================== -->
+
+<div
+    class="modal"
+    id="serviceModal">
+
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+            <h2>
+                Book Service
+            </h2>
+
+
+            <button
+                class="close-modal"
+                onclick="closeService()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <p>
+
+            Enter your details below to request this service.
+            The selected service has already been captured.
+
+        </p>
+
+
+
+        <!-- ==================================================
+             BOOKING FORM
+        ================================================== -->
+
+        <form id="bookingForm">
+
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label for="clientName">
+                    Full Name
+                </label>
+
+
+                <input
+                    type="text"
+                    id="clientName"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                    required>
+
+            </div>
+
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="clientEmail">
+                    Email Address
+                </label>
+
+
+                <input
+                    type="email"
+                    id="clientEmail"
+                    placeholder="Enter your email address"
+                    autocomplete="email"
+                    required>
+
+            </div>
+
+
+
+            <!-- AUTO-CAPTURED SERVICE -->
+
+            <div class="form-group">
+
+                <label for="selectedService">
+                    Selected Service
+                </label>
+
+
+                <input
+                    type="text"
+                    id="selectedService"
+                    readonly>
+
+            </div>
+
+
+
+            <!-- OPTIONS -->
+
+            <div class="booking-options">
+
+                <p class="option-title">
+
+                    Choose how you would like to book:
+
+                </p>
+
+
+                <div class="modal-actions">
+
+
+                    <!-- WHATSAPP -->
+
+                    <button
+                        type="button"
+                        class="modal-action"
+                        onclick="bookViaWhatsApp()">
+
+                        WhatsApp
+
+                    </button>
+
+
+
+                    <!-- GMAIL -->
+
+                    <button
+                        type="button"
+                        class="modal-action"
+                        onclick="bookViaGmail()">
+
+                        Gmail
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+    ©
+    <span id="year"></span>
+
+    <span class="footer-name">
+        Horizon Technologies
+    </span>.
+
+    All Rights Reserved.
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+  AUTO-RENEWING YEAR
+========================================================= */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+
+/* =========================================================
+   SERVICE INFORMATION
+========================================================= */
+
+const services = {
+
+    "Web Development":
+        "I can help create responsive and modern websites for personal brands, businesses, organizations and other projects.",
+
+
+    "Software Development":
+        "Customized software solutions can be developed around specific requirements, workflows and information-management needs.",
+
+
+    "Data Analysis":
+        "Data can be cleaned, analyzed and presented through meaningful tables, visualizations and reports.",
+
+
+    "Graphic Design":
+        "Professional visual materials can be developed for digital platforms, projects, brands and other communication needs.",
+
+
+    "Computer Training":
+        "Training can cover practical computer skills, programming, applications, data analysis and other digital technologies.",
+
+
+    "Computer Networking":
+        "Support can include networking concepts, configuration, troubleshooting and practical networking projects.",
+
+
+    "Branding and Digital Identity":
+        "I can help develop a consistent digital presentation for individuals, projects and organizations.",
+
+
+    "Technical Consultation":
+        "Discuss a technology idea or challenge and receive practical guidance on possible approaches and implementation.",
+
+
+    "Project Development":
+        "Technology projects can be planned and developed according to the project's objectives, requirements and intended users."
+
+};
+
+
+
+/* =========================================================
+   CURRENT SELECTED SERVICE
+========================================================= */
+
+let selectedServiceName = "";
+
+
+
+/* =========================================================
+   OPEN BOOK SERVICE WINDOW
+========================================================= */
+
+function openService(service) {
+
+    selectedServiceName = service;
+
+
+    document.getElementById(
+        "selectedService"
+    ).value = service;
+
+
+    document
+        .getElementById("serviceModal")
+        .classList.add("active");
+
+
+    /*
+       Automatically focus
+       on the name field.
+    */
+
+    setTimeout(function() {
+
+        document
+            .getElementById("clientName")
+            .focus();
+
+    }, 300);
+
+}
+
+
+
+/* =========================================================
+   CLOSE BOOK SERVICE WINDOW
+========================================================= */
+
+function closeService() {
+
+    document
+        .getElementById("serviceModal")
+        .classList.remove("active");
+
+}
+
+
+
+/* =========================================================
+   YOUR WHATSAPP NUMBER
+=========================================================
+
+   CHANGE THIS TO YOUR REAL
+   WHATSAPP NUMBER.
+
+   Use international format
+   without + or spaces.
+
+   Example:
+
+   254712345678
+
+========================================================= */
+
+const WHATSAPP_NUMBER =
+    "254794939065";
+
+
+
+/* =========================================================
+   YOUR GMAIL ADDRESS
+=========================================================
+
+   CHANGE THIS TO YOUR REAL EMAIL.
+
+========================================================= */
+
+const GMAIL_ADDRESS =
+    "horintechie@gmail.com";
+
+
+
+/* =========================================================
+   GET BOOKING DETAILS
+========================================================= */
+
+function getBookingDetails() {
+
+
+    const name =
+        document
+            .getElementById("clientName")
+            .value
+            .trim();
+
+
+    const email =
+        document
+            .getElementById("clientEmail")
+            .value
+            .trim();
+
+
+
+    /* NAME VALIDATION */
+
+    if (!name) {
+
+        alert(
+            "Please enter your full name."
+        );
+
+        document
+            .getElementById("clientName")
+            .focus();
+
+        return null;
+    }
+
+
+
+    /* EMAIL VALIDATION */
+
+    if (!email) {
+
+        alert(
+            "Please enter your email address."
+        );
+
+        document
+            .getElementById("clientEmail")
+            .focus();
+
+        return null;
+    }
+
+
+
+    /* BASIC EMAIL CHECK */
+
+    const emailPattern =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+    if (!emailPattern.test(email)) {
+
+        alert(
+            "Please enter a valid email address."
+        );
+
+        document
+            .getElementById("clientEmail")
+            .focus();
+
+        return null;
+    }
+
+
+
+    return {
+
+        name:
+            name,
+
+        email:
+            email,
+
+        service:
+            selectedServiceName
+
+    };
+
+}
+
+
+
+/* =========================================================
+   BOOK VIA WHATSAPP
+========================================================= */
+
+function bookViaWhatsApp() {
+
+
+    const details =
+        getBookingDetails();
+
+
+    if (!details) {
+        return;
+    }
+
+
+
+    const message =
+
+        "BOOK SERVICE REQUEST\n\n" +
+
+        "Name: " +
+        details.name +
+
+        "\nEmail: " +
+        details.email +
+
+        "\nService: " +
+        details.service +
+
+        "\n\n" +
+
+        "Hello Sir Amos, " +
+
+        "I would like to book this service " +
+
+        "and discuss the requirements with you.";
+
+
+
+    const whatsappURL =
+
+        "https://wa.me/" +
+
+        WHATSAPP_NUMBER +
+
+        "?text=" +
+
+        encodeURIComponent(message);
+
+
+
+    window.open(
+        whatsappURL,
+        "_blank"
+    );
+
+}
+
+
+
+/* =========================================================
+   BOOK VIA GMAIL
+========================================================= */
+
+function bookViaGmail() {
+
+
+    const details =
+        getBookingDetails();
+
+
+    if (!details) {
+        return;
+    }
+
+
+
+    const subject =
+
+        "Service Booking Request - " +
+
+        details.service;
+
+
+
+    const body =
+
+        "Hello Sir Amos,\n\n" +
+
+        "I would like to book your service.\n\n" +
+
+        "Full Name: " +
+
+        details.name +
+
+        "\nEmail Address: " +
+
+        details.email +
+
+        "\nService: " +
+
+        details.service +
+
+        "\n\n" +
+
+        "I would like to discuss the requirements " +
+
+        "and next steps.\n\n" +
+
+        "Thank you.";
+
+
+
+    const gmailURL =
+
+        "mailto:" +
+
+        GMAIL_ADDRESS +
+
+        "?subject=" +
+
+        encodeURIComponent(subject) +
+
+        "&body=" +
+
+        encodeURIComponent(body);
+
+
+
+    window.location.href =
+        gmailURL;
+
+}
+
+
+
+/* =========================================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+========================================================= */
+
+document
+    .getElementById("serviceModal")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+
+                closeService();
+
+            }
+
+        }
+    );
+
+
+
+/* =========================================================
+   ESCAPE KEY CLOSES MODAL
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeService();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
+
+  

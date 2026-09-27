@@ -1,0 +1,3278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>amos</title>
+
+
+<style>
+
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: #ffffff;
+
+    overflow-x: hidden;
+
+    background: #061326;
+}
+
+a,
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   ANIMATED NAVY BACKGROUND
+========================================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -10;
+
+    background:
+        linear-gradient(
+            135deg,
+            #020814,
+            #061326,
+            #0b1c34,
+            #030a17
+        );
+
+    background-size: 400% 400%;
+
+    animation:
+        backgroundMovement
+        18s
+        ease
+        infinite;
+}
+
+
+@keyframes backgroundMovement {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+
+/* =========================================================
+   MOVING WHITE BUBBLES
+========================================================= */
+
+.bubble-container {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: -5;
+}
+
+
+.bubble {
+
+    position: absolute;
+
+    bottom: -150px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.35);
+
+    background:
+        rgba(255,255,255,0.07);
+
+    animation:
+        diagonalBubble
+        linear
+        infinite;
+}
+
+
+.bubble:nth-child(1) {
+
+    width: 25px;
+    height: 25px;
+
+    left: 5%;
+
+    animation-duration: 14s;
+}
+
+
+.bubble:nth-child(2) {
+
+    width: 60px;
+    height: 60px;
+
+    left: 17%;
+
+    animation-duration: 20s;
+
+    animation-delay: 2s;
+}
+
+
+.bubble:nth-child(3) {
+
+    width: 18px;
+    height: 18px;
+
+    left: 31%;
+
+    animation-duration: 12s;
+
+    animation-delay: 4s;
+}
+
+
+.bubble:nth-child(4) {
+
+    width: 90px;
+    height: 90px;
+
+    left: 48%;
+
+    animation-duration: 24s;
+
+    animation-delay: 1s;
+}
+
+
+.bubble:nth-child(5) {
+
+    width: 40px;
+    height: 40px;
+
+    left: 66%;
+
+    animation-duration: 16s;
+
+    animation-delay: 5s;
+}
+
+
+.bubble:nth-child(6) {
+
+    width: 25px;
+    height: 25px;
+
+    left: 82%;
+
+    animation-duration: 13s;
+
+    animation-delay: 3s;
+}
+
+
+.bubble:nth-child(7) {
+
+    width: 75px;
+    height: 75px;
+
+    left: 93%;
+
+    animation-duration: 22s;
+}
+
+
+@keyframes diagonalBubble {
+
+    0% {
+
+        transform:
+            translate(0, 0);
+
+        opacity: 0;
+    }
+
+    10% {
+
+        opacity: 1;
+    }
+
+    50% {
+
+        transform:
+            translate(
+                -100px,
+                -60vh
+            );
+    }
+
+    100% {
+
+        transform:
+            translate(
+                -260px,
+                -125vh
+            );
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   MAIN 20% / 80% LAYOUT
+========================================================= */
+
+.website {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: grid;
+
+    grid-template-columns:
+        20% 80%;
+}
+
+
+/* =========================================================
+   LEFT 20% PARTITION
+========================================================= */
+
+.sidebar {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding:
+        25px
+        18px
+        20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(2,10,22,0.98),
+            rgba(6,19,38,0.96)
+        );
+
+    border-right:
+        1px solid
+        rgba(246,196,83,0.35);
+
+    position: relative;
+
+    z-index: 20;
+}
+
+
+/* =========================================================
+   PHOTO AREA
+========================================================= */
+
+.profile-photo-area {
+
+    position: relative;
+
+    width:
+        clamp(
+            130px,
+            11vw,
+            210px
+        );
+
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 22px;
+}
+
+
+/* Outer rotating gold ring */
+
+.profile-photo-area::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 2%;
+
+    border-radius: 50%;
+
+    border:
+        2px solid
+        rgba(246,196,83,0.8);
+
+    border-top-color:
+        #ffffff;
+
+    border-right-color:
+        #f2a33b;
+
+    animation:
+        rotateFrame
+        7s
+        linear
+        infinite;
+}
+
+
+@keyframes rotateFrame {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* Second oscillating ring */
+
+.profile-photo-area::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 7%;
+
+    border-radius: 50%;
+
+    border:
+        1px dashed
+        rgba(255,255,255,0.65);
+
+    animation:
+        oscillatingRing
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes oscillatingRing {
+
+    0%,
+    100% {
+
+        transform:
+            scale(0.94);
+
+        opacity: 0.55;
+    }
+
+    50% {
+
+        transform:
+            scale(1.05);
+
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   OSCILLATING DOTS
+========================================================= */
+
+.photo-dot {
+
+    position: absolute;
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        #f6c453;
+
+    box-shadow:
+        0 0 12px
+        rgba(246,196,83,0.8);
+
+    z-index: 5;
+}
+
+
+.dot-one {
+
+    top: 2%;
+
+    left: 50%;
+
+    animation:
+        dotPulse
+        1.7s
+        ease-in-out
+        infinite;
+}
+
+
+.dot-two {
+
+    right: 4%;
+
+    top: 48%;
+
+    background:
+        #ffffff;
+
+    animation:
+        dotPulse
+        2.1s
+        ease-in-out
+        infinite
+        0.4s;
+}
+
+
+.dot-three {
+
+    bottom: 3%;
+
+    left: 50%;
+
+    animation:
+        dotPulse
+        1.9s
+        ease-in-out
+        infinite
+        0.8s;
+}
+
+
+.dot-four {
+
+    left: 4%;
+
+    top: 48%;
+
+    background:
+        #f2a33b;
+
+    animation:
+        dotPulse
+        2.2s
+        ease-in-out
+        infinite
+        1s;
+}
+
+
+@keyframes dotPulse {
+
+    0%,
+    100% {
+
+        transform:
+            scale(0.7);
+
+        opacity: 0.5;
+    }
+
+    50% {
+
+        transform:
+            scale(1.7);
+
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   ACTUAL PHOTO
+========================================================= */
+
+.profile-photo {
+
+    width: 78%;
+
+    height: 78%;
+
+    border-radius: 50%;
+
+    padding: 5px;
+
+    position: relative;
+
+    z-index: 3;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f6c453,
+            #f2a33b,
+            #ffffff
+        );
+
+    box-shadow:
+        0 15px 35px
+        rgba(0,0,0,0.5);
+}
+
+
+.profile-photo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border:
+        3px solid
+        #061326;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   IDENTITY
+========================================================= */
+
+.identity {
+
+    width: 100%;
+
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+
+.identity-name {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            1.25rem,
+            2vw,
+            1.9rem
+        );
+
+    line-height: 1.1;
+
+    color: #ffffff;
+}
+
+
+.identity-name span {
+
+    color: #f6c453;
+}
+
+
+.identity-title {
+
+    margin-top: 8px;
+
+    color: #f2a33b;
+
+    font-size: 0.68rem;
+
+    line-height: 1.5;
+
+    letter-spacing: 1.4px;
+
+    text-transform: uppercase;
+}
+
+
+.gold-line {
+
+    width: 65%;
+
+    height: 2px;
+
+    margin:
+        15px
+        auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f6c453,
+            #f2a33b,
+            #ffffff
+        );
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.navigation a {
+
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    padding:
+        11px
+        7px;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    font-size: 0.78rem;
+
+    border:
+        1px solid
+        rgba(246,196,83,0.38);
+
+    border-radius: 8px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.navigation a::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -110%;
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.2),
+            transparent
+        );
+
+    transition:
+        left 0.5s ease;
+}
+
+
+.navigation a:hover::before {
+
+    left: 110%;
+}
+
+
+.navigation a:hover {
+
+    transform:
+        translateX(5px);
+
+    color: #061326;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f6c453,
+            #f2a33b,
+            #ffffff
+        );
+
+    box-shadow:
+        0 7px 20px
+        rgba(246,196,83,0.2);
+}
+
+
+/* =========================================================
+   FREELANCE
+========================================================= */
+
+.freelance {
+
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding:
+        15px
+        9px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(246,196,83,0.45);
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(246,196,83,0.14),
+            rgba(242,163,59,0.08),
+            rgba(255,255,255,0.04)
+        );
+}
+
+
+.freelance strong {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #f6c453;
+
+    font-size: 0.8rem;
+}
+
+
+.freelance p {
+
+    color:
+        rgba(255,255,255,0.68);
+
+    font-size: 0.68rem;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ADDITIONAL INFORMATION
+========================================================= */
+
+.sidebar-info {
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,0.62);
+
+    font-size: 0.68rem;
+
+    line-height: 1.8;
+}
+
+
+.sidebar-info span {
+
+    color: #f6c453;
+}
+
+
+/* =========================================================
+   CV REQUEST
+========================================================= */
+
+.cv-request-section {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding:
+        18px
+        10px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(246,196,83,0.4);
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(246,196,83,0.09),
+            rgba(255,255,255,0.035)
+        );
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.cv-request-section:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        #f6c453;
+}
+
+
+.cv-request-section h3 {
+
+    color: #f6c453;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 1.05rem;
+}
+
+
+.cv-request-section p {
+
+    margin:
+        7px
+        auto
+        13px;
+
+    color:
+        rgba(255,255,255,0.65);
+
+    font-size: 0.67rem;
+
+    line-height: 1.5;
+}
+
+
+.cv-request-button {
+
+    padding:
+        10px
+        18px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    color: #061326;
+
+    font-size: 0.7rem;
+
+    font-weight: bold;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f6c453,
+            #f2a33b,
+            #ffffff
+        );
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.cv-request-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(246,196,83,0.25);
+}
+
+
+/* =========================================================
+   ADMIN FOOTER
+========================================================= */
+
+.sidebar-footer {
+
+    margin-top: auto;
+
+    padding-top: 20px;
+
+    text-align: center;
+}
+
+
+.admin-footer-link {
+
+    display: inline-block;
+
+    color:
+        rgba(255,255,255,0.75);
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 0.78rem;
+
+    letter-spacing: 1px;
+
+    padding-bottom: 4px;
+
+    border-bottom:
+        1px solid
+        rgba(246,196,83,0.4);
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.admin-footer-link:hover {
+
+    color: #f6c453;
+
+    border-color: #f6c453;
+}
+
+
+.copyright {
+
+    margin-top: 7px;
+
+    color:
+        rgba(255,255,255,0.4);
+
+    font-size: 0.6rem;
+}
+
+
+/* =========================================================
+   RIGHT 80% CONTENT
+========================================================= */
+
+.main-content {
+
+    width: 100%;
+
+    min-width: 0;
+
+    min-height: 100vh;
+
+    padding:
+        35px
+        5%
+        35px;
+
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.main-header {
+
+    text-align: center;
+
+    margin-bottom: 35px;
+}
+
+
+.main-header h1 {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            2.1rem,
+            4vw,
+            4rem
+        );
+
+    color: #ffffff;
+
+    letter-spacing: 1px;
+}
+
+
+.main-header h1 span {
+
+    color: #f6c453;
+}
+
+
+.main-header h2 {
+
+    margin-top: 8px;
+
+    color: #f2a33b;
+
+    font-size:
+        clamp(
+            0.75rem,
+            1.5vw,
+            1.1rem
+        );
+
+    font-weight: 500;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================================================
+   INTRODUCTION
+========================================================= */
+
+.intro-section {
+
+    min-height: 560px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        45px;
+
+    border:
+        1px solid
+        rgba(246,196,83,0.28);
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.07),
+            rgba(246,196,83,0.045),
+            rgba(242,163,59,0.06)
+        );
+
+    box-shadow:
+        0 20px 55px
+        rgba(0,0,0,0.25);
+}
+
+
+.intro-text {
+
+    width: min(
+        100%,
+        900px
+    );
+
+    text-align: center;
+}
+
+
+.intro-text h3 {
+
+    margin-bottom: 13px;
+
+    color: #f6c453;
+
+    font-size: 0.9rem;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+.intro-text h2 {
+
+    margin-bottom: 20px;
+
+    color: #ffffff;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            2.1rem,
+            4.5vw,
+            4rem
+        );
+
+    line-height: 1.1;
+}
+
+
+.intro-text h2 span {
+
+    color: #f2a33b;
+}
+
+
+.intro-text p {
+
+    max-width: 850px;
+
+    margin:
+        0
+        auto
+        15px;
+
+    color:
+        rgba(255,255,255,0.76);
+
+    font-size:
+        clamp(
+            0.85rem,
+            1.2vw,
+            1rem
+        );
+
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   THREE FEATURE LINKS
+========================================================= */
+
+.intro-links {
+
+    width: 100%;
+
+    max-width: 850px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 16px;
+
+    margin:
+        30px
+        auto
+        0;
+}
+
+
+/* Individual link */
+
+.intro-link {
+
+    position: relative;
+
+    min-height: 90px;
+
+    padding:
+        20px
+        12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 0.9rem;
+
+    font-weight: bold;
+
+    letter-spacing: 0.5px;
+
+    border:
+        1px solid
+        rgba(246,196,83,0.42);
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.06),
+            rgba(246,196,83,0.04)
+        );
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+}
+
+
+/* Moving shine */
+
+.intro-link::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -120%;
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.25),
+            transparent
+        );
+
+    transition:
+        left 0.6s ease;
+}
+
+
+.intro-link:hover::before {
+
+    left: 120%;
+}
+
+
+/* Bottom gold line */
+
+.intro-link::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 50%;
+
+    width: 0;
+
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f6c453,
+            #f2a33b,
+            #ffffff
+        );
+
+    transition:
+        width 0.35s ease,
+        left 0.35s ease;
+}
+
+
+.intro-link:hover::after {
+
+    width: 100%;
+
+    left: 0;
+}
+
+
+.intro-link:hover {
+
+    transform:
+        translateY(-8px);
+
+    color: #061326;
+
+    border-color:
+        #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f6c453,
+            #f2a33b,
+            #ffffff
+        );
+
+    box-shadow:
+        0 15px 35px
+        rgba(246,196,83,0.25);
+}
+
+
+/* =========================================================
+   MAIN FOOTER
+========================================================= */
+
+.main-footer {
+
+    margin-top: 35px;
+
+    padding:
+        20px 0;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,0.48);
+
+    font-size: 0.7rem;
+}
+
+
+.main-footer span {
+
+    color: #f6c453;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0,0,0,0.82);
+
+    backdrop-filter:
+        blur(8px);
+}
+
+
+.modal-overlay.active {
+
+    display: flex;
+
+    animation:
+        fadeIn
+        0.25s
+        ease;
+}
+
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+.modal-box {
+
+    width:
+        min(
+            100%,
+            520px
+        );
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 30px;
+
+    position: relative;
+
+    border:
+        1px solid
+        rgba(246,196,83,0.55);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #071426,
+            #0b203c
+        );
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,0.55);
+
+    animation:
+        modalOpen
+        0.3s
+        ease;
+}
+
+
+@keyframes modalOpen {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.96);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+.modal-title {
+
+    margin-bottom: 22px;
+
+    text-align: center;
+}
+
+
+.modal-title h2 {
+
+    color: #f6c453;
+
+    font-family:
+        Georgia,
+        serif;
+}
+
+
+.modal-title p {
+
+    margin-top: 7px;
+
+    color:
+        rgba(255,255,255,0.65);
+
+    font-size: 0.78rem;
+
+    line-height: 1.5;
+}
+
+
+.close-modal {
+
+    position: absolute;
+
+    top: 14px;
+
+    right: 18px;
+
+    width: 32px;
+
+    height: 32px;
+
+    border: none;
+
+    border-radius: 50%;
+   
+    cursor: pointer;
+
+    color: #ffffff;
+
+    background:
+        rgba(255,255,255,0.06);
+
+    font-size: 1.1rem;
+}
+
+
+.close-modal:hover {
+
+    color: #061326;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f6c453,
+            #f2a33b
+        );
+}
+
+
+/* =========================================================
+   CONTACT OPTIONS
+========================================================= */
+
+.contact-options {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+
+.contact-option {
+
+    padding: 12px;
+
+    border:
+        1px solid
+        rgba(246,196,83,0.35);
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    color: #ffffff;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    transition:
+        0.3s ease;
+}
+
+
+.contact-option:hover,
+.contact-option.selected {
+
+    color: #061326;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f6c453,
+            #f2a33b,
+            #ffffff
+        );
+}
+
+
+/* =========================================================
+   FORMS
+========================================================= */
+
+.contact-form {
+
+    display: none;
+}
+
+
+.contact-form.active {
+
+    display: block;
+}
+
+
+.form-group {
+
+    margin-bottom: 16px;
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #f6c453;
+
+    font-size: 0.76rem;
+}
+
+
+.form-group input,
+.form-group textarea {
+
+    width: 100%;
+
+    padding:
+        12px
+        13px;
+
+    border:
+        1px solid
+        rgba(246,196,83,0.3);
+
+    border-radius: 8px;
+
+    outline: none;
+
+    color: #ffffff;
+
+    background:
+        rgba(255,255,255,0.06);
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus {
+
+    border-color:
+        #f6c453;
+}
+
+
+.form-group textarea {
+
+    min-height: 115px;
+
+    resize: vertical;
+}
+
+
+.send-button {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    color: #061326;
+
+    font-weight: bold;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f6c453,
+            #f2a33b,
+            #ffffff
+        );
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.send-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(246,196,83,0.2);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px)
+       and (min-width: 751px) {
+
+    .website {
+
+        grid-template-columns:
+            25% 75%;
+    }
+
+
+    .profile-photo-area {
+
+        width:
+            clamp(
+                120px,
+                14vw,
+                180px
+            );
+    }
+
+
+    .intro-section {
+
+        min-height:
+            520px;
+
+        padding:
+            35px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 750px) {
+
+    .website {
+
+        display: block;
+
+        width: 100%;
+    }
+
+
+    .sidebar {
+
+        min-height: auto;
+
+        width: 100%;
+
+        padding:
+            25px
+            17px
+            22px;
+
+        border-right: none;
+
+        border-bottom:
+            1px solid
+            rgba(246,196,83,0.35);
+    }
+
+
+    .profile-photo-area {
+
+        width:
+            min(
+                190px,
+                48vw
+            );
+
+        margin-bottom: 18px;
+    }
+
+
+    .navigation {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 8px;
+    }
+
+
+    .navigation a {
+
+        font-size: 0.76rem;
+    }
+
+
+    .sidebar-info {
+
+        display: none;
+    }
+
+
+    .cv-request-section {
+
+        max-width: 420px;
+    }
+
+
+    .sidebar-footer {
+
+        margin-top: 25px;
+    }
+
+
+    .main-content {
+
+        width: 100%;
+
+        min-height: auto;
+
+        padding:
+            30px
+            15px
+            30px;
+    }
+
+
+    .main-header {
+
+        margin-bottom: 25px;
+    }
+
+
+    .intro-section {
+
+        min-height: auto;
+
+        padding:
+            40px
+            20px;
+    }
+
+
+    .intro-links {
+
+        grid-template-columns:
+            1fr;
+
+        max-width: 400px;
+    }
+
+
+    .intro-link {
+
+        min-height: 70px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 430px) {
+
+    .navigation {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .profile-photo-area {
+
+        width: 155px;
+    }
+
+
+    .main-header h1 {
+
+        font-size: 2rem;
+    }
+
+
+    .main-header h2 {
+
+        font-size: 0.68rem;
+
+        letter-spacing: 1.2px;
+    }
+
+
+    .intro-text h2 {
+
+        font-size: 2rem;
+    }
+
+
+    .intro-section {
+
+        padding:
+            35px
+            15px;
+    }
+
+
+    .modal-box {
+
+        padding:
+            25px
+            17px;
+    }
+
+
+    .contact-options {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     BACKGROUND BUBBLES
+======================================================= -->
+
+<div class="bubble-container">
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+    <div class="bubble"></div>
+
+</div>
+
+
+
+<!-- =======================================================
+     WEBSITE
+======================================================= -->
+
+<div class="website">
+
+
+    <!-- ===================================================
+         LEFT 20% PARTITION
+    ==================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- =================================================
+             CIRCULAR PROFILE PHOTO
+        ================================================== -->
+
+        <div class="profile-photo-area">
+
+            <span class="photo-dot dot-one"></span>
+
+            <span class="photo-dot dot-two"></span>
+
+            <span class="photo-dot dot-three"></span>
+
+            <span class="photo-dot dot-four"></span>
+
+
+            <div class="profile-photo">
+
+                <!--
+                    Replace profile.jpg
+                    with your actual photo.
+                -->
+
+                <img
+                    src="amoh.webp"
+                    alt="amos"
+                >
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             IDENTITY
+        ================================================== -->
+
+        <div class="identity">
+
+            <div class="identity-name">
+
+                M. A. 
+                <span>Nyabwari</span>
+
+            </div>
+
+
+            <div class="identity-title">
+
+                Computer Science
+                & Technology
+
+            </div>
+
+
+            <div class="gold-line"></div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             NAVIGATION
+        ================================================== -->
+
+        <nav class="navigation">
+
+
+            <a href="skills.html">
+                Skills
+            </a>
+
+
+            <a href="blog.html">
+                Blog
+            </a>
+
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </nav>
+
+
+
+        <!-- =================================================
+             FREELANCE
+        ================================================== -->
+
+        <div class="freelance">
+
+            <strong>
+                Available for freelance projects
+            </strong>
+
+
+            <p>
+
+                Open to selected technology,
+                software and digital projects.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+          ADDITIONAL INFORMATION
+        ================================================== -->
+
+        <div class="sidebar-info">
+
+            <p>
+
+                <span>Focus:</span>
+                Technology & Innovation
+
+            </p>
+
+
+            <p>
+
+                <span>Approach:</span>
+                Creative & Solution Driven
+
+            </p>
+
+
+            <p>
+
+                <span>Availability:</span>
+                Project Based
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CV REQUEST
+        ================================================== -->
+
+        <div class="cv-request-section">
+
+            <h3>
+                Request My CV
+            </h3>
+
+
+            <p>
+
+                Need my professional CV?
+                Send a request with your
+                details and reason.
+
+            </p>
+
+
+            <button
+                type="button"
+                class="cv-request-button"
+                id="openCvModal"
+            >
+                Request CV
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ADMIN LINK DISGUISED AS FOOTER
+        ================================================== -->
+
+        <div class="sidebar-footer">
+
+            <a
+                href="admin.html"
+                class="admin-footer-link"
+            >
+                HT
+            </a>
+
+
+            <div class="copyright">
+
+                ©
+                <span id="sidebarYear"></span>
+
+                All Rights Reserved.
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ===================================================
+         RIGHT 80% PARTITION
+    ==================================================== -->
+
+    <main class="main-content">
+
+        <!-- =================================================
+             INTRODUCTION
+        ================================================== -->
+
+        <section class="intro-section">
+
+
+            <div class="intro-text">
+
+                <h3>
+
+                    Welcome to my digital space
+
+                </h3>
+
+
+                <h2>
+
+                    Building Ideas Into
+                    <span>Technology</span>
+
+                </h2>
+
+
+                <p>
+
+                    I am a technology-focused
+                    professional with a background
+                    in Computer Science and an
+                    interest in software development,
+                    digital solutions, data, networking
+                    and modern technology.
+
+                </p>
+
+
+                <p>
+
+                    I enjoy transforming ideas and
+                    practical challenges into useful,
+                    reliable and user-friendly
+                    technology solutions.
+
+                </p>
+
+
+
+                <!-- =========================================
+                     FEATURE LINKS
+                ========================================== -->
+
+                <div class="intro-links">
+
+
+                    <a
+                        href="about.html"
+                        class="intro-link"
+                    >
+
+                        Explore My Profile
+
+                    </a>
+
+
+                    <a
+                        href="services.html"
+                        class="intro-link"
+                    >
+
+                        Services
+
+                    </a>
+
+
+                    <a
+                        href="projects.html"
+                        class="intro-link"
+                    >
+
+                        Projects
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="main-footer">
+
+            ©
+            <span id="mainYear"></span>
+
+            Horizon Technologies | 
+            All Rights Reserved.
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+
+<!-- =======================================================
+     CONTACT MODAL
+======================================================= -->
+
+<div
+    class="modal-overlay"
+    id="contactModal"
+>
+
+    <div class="modal-box">
+
+
+        <button
+            type="button"
+            class="close-modal"
+            data-close="contactModal"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-title">
+
+            <h2>
+                Contact Me
+            </h2>
+
+
+            <p>
+
+                Select your preferred
+                contact method.
+
+            </p>
+
+        </div>
+
+
+        <div class="contact-options">
+
+            <button
+                type="button"
+                class="contact-option"
+                id="whatsappOption"
+            >
+                WhatsApp
+            </button>
+
+
+            <button
+                type="button"
+                class="contact-option"
+                id="gmailOption"
+            >
+                Gmail
+            </button>
+
+        </div>
+
+
+
+        <!-- WHATSAPP FORM -->
+
+        <form
+            class="contact-form"
+            id="whatsappForm"
+        >
+
+            <div class="form-group">
+
+                <label>
+                    Your Name
+                </label>
+
+                <input
+                    type="text"
+                    id="whatsappName"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Reason for Contact
+                </label>
+
+                <textarea
+                    id="whatsappReason"
+                    placeholder="Tell me how I can help..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="send-button"
+            >
+
+                Send via WhatsApp
+
+            </button>
+
+        </form>
+
+
+
+        <!-- GMAIL FORM -->
+
+        <form
+            class="contact-form"
+            id="gmailForm"
+        >
+
+            <div class="form-group">
+
+                <label>
+                    Your Name
+                </label>
+
+                <input
+                    type="text"
+                    id="gmailName"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Your Email
+                </label>
+
+                <input
+                    type="email"
+                    id="gmailEmail"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Reason for Contact
+                </label>
+
+                <textarea
+                    id="gmailReason"
+                    placeholder="Tell me how I can help..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="send-button"
+            >
+
+                Send via Gmail
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =======================================================
+     CV REQUEST MODAL
+======================================================= -->
+
+<div
+    class="modal-overlay"
+    id="cvModal"
+>
+
+    <div class="modal-box">
+
+
+        <button
+            type="button"
+            class="close-modal"
+            data-close="cvModal"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-title">
+
+            <h2>
+                Request My CV
+            </h2>
+
+
+            <p>
+
+                Please provide your details
+                and explain why you would
+                like to receive my CV.
+
+            </p>
+
+        </div>
+
+
+
+        <form id="cvForm">
+
+
+            <div class="form-group">
+
+                <label for="cvName">
+
+                    Full Name
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="cvName"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="cvEmail">
+
+                    Email Address
+
+                </label>
+
+
+                <input
+                    type="email"
+                    id="cvEmail"
+                    placeholder="Enter your email address"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="cvReason">
+
+                    Reason for Requesting CV
+
+                </label>
+
+
+                <textarea
+                    id="cvReason"
+                    placeholder="For example: employment, freelance opportunity, collaboration..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+
+            <button
+                type="submit"
+                class="send-button"
+            >
+
+                Send CV Request via WhatsApp
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   CONFIGURATION
+========================================================= */
+
+
+/*
+   Replace with your actual WhatsApp number.
+
+   Kenya example:
+
+   254712345678
+
+   Do not include:
+   +
+   spaces
+   brackets
+   hyphens
+*/
+
+const WHATSAPP_NUMBER =
+    "254794939065";
+
+
+/*
+   Replace with your actual email.
+*/
+
+const GMAIL_ADDRESS =
+    "horintechie@gmail.com";
+
+
+
+/* =========================================================
+  AUTOMATIC YEAR
+========================================================= */
+
+const currentYear =
+    new Date().getFullYear();
+
+
+document.getElementById(
+    "sidebarYear"
+).textContent =
+    currentYear;
+
+
+document.getElementById(
+    "mainYear"
+).textContent =
+    currentYear;
+
+
+
+/* =========================================================
+   MODAL REFERENCES
+========================================================= */
+
+const contactModal =
+    document.getElementById(
+        "contactModal"
+    );
+
+
+const cvModal =
+    document.getElementById(
+        "cvModal"
+    );
+
+
+
+/* =========================================================
+   OPEN CV MODAL
+========================================================= */
+
+document
+    .getElementById("openCvModal")
+    .addEventListener(
+        "click",
+        function () {
+
+            cvModal.classList.add(
+                "active"
+            );
+
+        }
+    );
+
+
+
+/* =========================================================
+   CLOSE BUTTONS
+========================================================= */
+
+document
+    .querySelectorAll(
+        "[data-close]"
+    )
+    .forEach(
+        function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const modalId =
+                        this.getAttribute(
+                            "data-close"
+                        );
+
+                    document
+                        .getElementById(
+                            modalId
+                        )
+                        .classList
+                        .remove(
+                            "active"
+                        );
+
+                }
+            );
+
+        }
+    );
+
+
+
+/* =========================================================
+   CLICK OUTSIDE MODAL
+========================================================= */
+
+document
+    .querySelectorAll(
+        ".modal-overlay"
+    )
+    .forEach(
+        function (overlay) {
+
+            overlay.addEventListener(
+                "click",
+                function (event) {
+
+                    if (
+                        event.target ===
+                        overlay
+                    ) {
+
+                        overlay.classList
+                            .remove(
+                                "active"
+                            );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            document
+                .querySelectorAll(
+                    ".modal-overlay"
+                )
+                .forEach(
+                    function (modal) {
+
+                        modal.classList
+                            .remove(
+                                "active"
+                            );
+
+                    }
+                );
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   CONTACT OPTIONS
+========================================================= */
+
+const whatsappOption =
+    document.getElementById(
+        "whatsappOption"
+    );
+
+
+const gmailOption =
+    document.getElementById(
+        "gmailOption"
+    );
+
+
+const whatsappForm =
+    document.getElementById(
+        "whatsappForm"
+    );
+
+
+const gmailForm =
+    document.getElementById(
+        "gmailForm"
+    );
+
+
+
+/* =========================================================
+   SHOW WHATSAPP
+========================================================= */
+
+function showWhatsapp() {
+
+    whatsappForm.classList.add(
+        "active"
+    );
+
+    gmailForm.classList.remove(
+        "active"
+    );
+
+    whatsappOption.classList.add(
+        "selected"
+    );
+
+    gmailOption.classList.remove(
+        "selected"
+    );
+
+}
+
+
+whatsappOption.addEventListener(
+    "click",
+    showWhatsapp
+);
+
+
+
+/* =========================================================
+   SHOW GMAIL
+========================================================= */
+
+function showGmail() {
+
+    gmailForm.classList.add(
+        "active"
+    );
+
+    whatsappForm.classList.remove(
+        "active"
+    );
+
+    gmailOption.classList.add(
+        "selected"
+    );
+
+    whatsappOption.classList.remove(
+        "selected"
+    );
+
+}
+
+
+gmailOption.addEventListener(
+    "click",
+    showGmail
+);
+
+
+
+/* =========================================================
+   WHATSAPP CONTACT
+========================================================= */
+
+whatsappForm.addEventListener(
+    "submit",
+    function (event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById(
+                "whatsappName"
+            )
+            .value
+            .trim();
+
+
+        const reason =
+            document.getElementById(
+                "whatsappReason"
+            )
+            .value
+            .trim();
+
+
+        if (
+            !name ||
+            !reason
+        ) {
+
+            alert(
+                "Please complete all required fields."
+            );
+
+            return;
+        }
+
+
+        const message =
+
+            "Hello Sir Amos" +
+            "\n\n" +
+
+            "My name is " +
+            name +
+            "." +
+            "\n\n" +
+
+            "Reason for contacting you:" +
+            "\n" +
+
+            reason;
+
+
+        const whatsappURL =
+
+            "https://wa.me/" +
+            WHATSAPP_NUMBER +
+            "?text=" +
+
+            encodeURIComponent(
+                message
+            );
+
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
+
+        contactModal.classList.remove(
+            "active"
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   GMAIL CONTACT
+========================================================= */
+
+gmailForm.addEventListener(
+    "submit",
+    function (event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById(
+                "gmailName"
+            )
+            .value
+            .trim();
+
+
+        const email =
+            document.getElementById(
+                "gmailEmail"
+            )
+            .value
+            .trim();
+
+
+        const reason =
+            document.getElementById(
+                "gmailReason"
+            )
+            .value
+            .trim();
+
+
+        if (
+            !name ||
+            !email ||
+            !reason
+        ) {
+
+            alert(
+                "Please complete all required fields."
+            );
+
+            return;
+        }
+
+
+        const subject =
+            "Website Contact - " +
+            name;
+
+
+        const body =
+
+            "Hello Sir Amos," +
+            "\n\n" +
+
+            "My name is " +
+            name +
+            "." +
+            "\n" +
+
+            "My email is " +
+            email +
+            "." +
+            "\n\n" +
+
+            "Reason for contacting you:" +
+            "\n" +
+
+            reason;
+
+
+        const gmailURL =
+
+            "mailto:" +
+            GMAIL_ADDRESS +
+
+            "?subject=" +
+
+            encodeURIComponent(
+                subject
+            ) +
+
+            "&body=" +
+
+            encodeURIComponent(
+                body
+            );
+
+
+        window.location.href =
+            gmailURL;
+
+
+        contactModal.classList.remove(
+            "active"
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   CV REQUEST
+========================================================= */
+
+const cvForm =
+    document.getElementById(
+        "cvForm"
+    );
+
+
+cvForm.addEventListener(
+    "submit",
+    function (event) {
+
+        event.preventDefault();
+
+
+        const fullName =
+            document.getElementById(
+                "cvName"
+            )
+            .value
+            .trim();
+
+
+        const email =
+            document.getElementById(
+                "cvEmail"
+            )
+            .value
+            .trim();
+
+
+        const reason =
+            document.getElementById(
+                "cvReason"
+            )
+            .value
+            .trim();
+
+
+        if (
+            !fullName ||
+            !email ||
+            !reason
+        ) {
+
+            alert(
+                "Please complete all CV request fields."
+            );
+
+            return;
+        }
+
+
+        const message =
+
+            "Hello Sir Amos." +
+            "\n\n" +
+
+            "I would like to request your CV." +
+            "\n\n" +
+
+            "Full Name: " +
+            fullName +
+            "\n" +
+
+            "Email: " +
+            email +
+            "\n\n" +
+
+            "Reason for requesting the CV:" +
+            "\n" +
+
+            reason;
+
+
+        const whatsappURL =
+
+            "https://wa.me/" +
+            WHATSAPP_NUMBER +
+            "?text=" +
+
+            encodeURIComponent(
+                message
+            );
+
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
+
+        cvForm.reset();
+
+        cvModal.classList.remove(
+            "active"
+        );
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
+
+    
+    
